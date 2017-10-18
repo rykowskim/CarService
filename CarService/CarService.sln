@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarService.Data", "CarService.Data\CarService.Data.csproj", "{F883E58C-A15A-44A4-AF70-F13846CB3201}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarService.Web", "CarService.Web\CarService.Web.csproj", "{F80C2C43-70FF-425A-AA3A-147521E04B32}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{F883E58C-A15A-44A4-AF70-F13846CB3201}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F883E58C-A15A-44A4-AF70-F13846CB3201}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F883E58C-A15A-44A4-AF70-F13846CB3201}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F80C2C43-70FF-425A-AA3A-147521E04B32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F80C2C43-70FF-425A-AA3A-147521E04B32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F80C2C43-70FF-425A-AA3A-147521E04B32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F80C2C43-70FF-425A-AA3A-147521E04B32}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
