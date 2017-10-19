@@ -1,4 +1,3 @@
-C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Data\obj\Debug\CarService.Data.csprojResolveAssemblyReference.cache
 C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Data\bin\roslyn\csc.exe
 C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Data\bin\roslyn\csc.exe.config
 C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Data\bin\roslyn\csc.rsp
@@ -49,3 +48,6 @@ C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Data\bin\System.Web
 C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Data\bin\System.Web.Mvc.xml
 C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Data\obj\Debug\CarService.Data.dll
 C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Data\obj\Debug\CarService.Data.pdb
+C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Data\bin\WebActivator.dll
+C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Data\bin\WebActivatorEx.dll
+C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Data\obj\Debug\CarService.Data.csprojResolveAssemblyReference.cache

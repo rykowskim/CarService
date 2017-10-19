@@ -1,5 +1,5 @@
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(CarService.Web.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(CarService.Web.App_Start.NinjectWebCommon), "Stop")]
+[assembly: WebActivator.PreApplicationStartMethod(typeof(CarService.Web.App_Start.NinjectWebCommon), "Start")]
+[assembly: WebActivator.ApplicationShutdownMethodAttribute(typeof(CarService.Web.App_Start.NinjectWebCommon), "Stop")]
 
 namespace CarService.Web.App_Start
 {
@@ -10,7 +10,6 @@ namespace CarService.Web.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
-    using System.Web.Mvc;
 
     public static class NinjectWebCommon 
     {
@@ -41,19 +40,11 @@ namespace CarService.Web.App_Start
         private static IKernel CreateKernel()
         {
             var kernel = new StandardKernel();
-            try
-            {
-                kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
-                kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
-
-                RegisterServices(kernel);
-                return kernel;
-            }
-            catch
-            {
-                kernel.Dispose();
-                throw;
-            }
+            kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
+            kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
+            
+            RegisterServices(kernel);
+            return kernel;
         }
 
         /// <summary>
@@ -62,7 +53,6 @@ namespace CarService.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            DependencyResolver.SetResolver(new Web.Infrastructure.NinjectDependencyResolver(kernel));
         }        
     }
 }
