@@ -50,4 +50,3 @@ C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Data\obj\Debug\CarS
 C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Data\obj\Debug\CarService.Data.pdb
 C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Data\bin\WebActivator.dll
 C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Data\bin\WebActivatorEx.dll
-C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Data\obj\Debug\CarService.Data.csprojResolveAssemblyReference.cache

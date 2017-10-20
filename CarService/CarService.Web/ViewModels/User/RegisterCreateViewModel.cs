@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace CarService.Web.ViewModels
+namespace CarService.Web.ViewModels.User
 {
     public class RegisterCreateViewModel
     {
@@ -31,7 +31,14 @@ namespace CarService.Web.ViewModels
         public string Surname { get; set; }
 
         [DisplayName("Data urodzenia")]
-        [Required(ErrorMessage ="Pole Data urodzenia jest wymagane")]
+        [Required(ErrorMessage = "Pole Data urodzenia jest wymagane")]
         public DateTime DateOfBirth { get; set; }
+
+        [DisplayName("PESEL")]
+        [Required(ErrorMessage = "Pole PESEL jest wymagane")]
+        public string Pesel { get; set; }
+
+        [DisplayName("Phone")]
+        public string Phone { get; set; }
     }
 }
