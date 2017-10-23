@@ -1,27 +1,16 @@
-﻿using CarService.Web.ViewModels.User;
+﻿using CarService.Data.Services.User;
+using CarService.Web.ViewModels.User;
 using System.Web.Mvc;
 
 namespace CarService.Web.Controllers.User
 {
-    public class UserController : Controller
+    public partial class UserController : Controller
     {
-        // GET: Register
-        [HttpGet, Route("User/Register")]
-        public ActionResult Register()
-        {
-            var viewModel = new RegisterCreateViewModel();
-            return View(viewModel);
-        }
+        private readonly IUserService _userService; 
 
-        [HttpPost, Route("User/Register"), ActionName("Register"), ValidateAntiForgeryToken]
-        public ActionResult RegisterPost()
+        public UserController(IUserService userService)
         {
-            var viewModel = new RegisterCreateViewModel();
-            if (!TryUpdateModel(viewModel) || !ModelState.IsValid)
-            {
-                return View();
-            }
-            return View(viewModel);
+            _userService = userService;
         }
     }
 }

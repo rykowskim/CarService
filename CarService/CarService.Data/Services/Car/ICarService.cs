@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace CarService.Data.Services
+namespace CarService.Data.Services.Car
 {
-    public interface ICarRepository
+    public interface ICarService
     {
         IEnumerable<Models.Car> Cars { get; }
     }

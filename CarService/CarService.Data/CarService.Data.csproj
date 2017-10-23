@@ -151,8 +151,11 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserXRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\IRepository.cs" />
-    <Compile Include="Services\Repository.cs" />
+    <Compile Include="Services\Car\CarService.cs" />
+    <Compile Include="Services\Car\ICarService.cs" />
+    <Compile Include="Services\User\IUserService.cs" />
+    <Compile Include="Services\User\UserService.cs" />
+    <Compile Include="Services\User\UserService.IsExistsEmail.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

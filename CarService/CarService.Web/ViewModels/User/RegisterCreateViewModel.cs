@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace CarService.Web.ViewModels.User
 {
-    public class RegisterCreateViewModel
+    public class RegisterCreateViewModel : IValidatableObject
     {
         [DisplayName("Email")]
         [Required(ErrorMessage = "Pole Email jest wymagane")]
@@ -40,5 +38,37 @@ namespace CarService.Web.ViewModels.User
 
         [DisplayName("Phone")]
         public string Phone { get; set; }
+
+
+        public IEnumerable<ValidationResult> Validate (ValidationContext validationContext)
+        {
+            if (!Email.Contains("@"))
+                yield return new ValidationResult("Błędny adres email", new[] { "Email" });
+
+            if (Password.Length < 6)
+                yield return new ValidationResult("Hasło musi zawierać minimum 6 znaków", new[] { "Password" });
+
+            if (Pesel.Length != 11) //todo sprawdzenie czy nie występuje jakiś znak
+                yield return new ValidationResult("Niepoprawny PESEL", new[] { "Pesel" });
+
+            //if (DateTime.Now.AddYears(-18). DateOfBirth) 18 lat = 567648000000 ms
+            //    yield return new ValidationResult("Osoba niepełnoletnia" + DateOfBirth + " " + DateTime.Now.AddYears(-18), new[] { "DateOfBirth" });
+        }
+
+        public Data.Models.User ToUser()
+        {
+            return new Data.Models.User
+            {
+                CreateDate = DateTime.Now,
+                ModifyDate = DateTime.Now,
+                IsActive = true,
+                Email = Email,
+                Password = Password,
+                Name = Name,
+                Surname = Surname,
+                DateofBirth = DateOfBirth,
+                Pesel = Pesel
+            };
+        }
     }
 }

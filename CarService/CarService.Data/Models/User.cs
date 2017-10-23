@@ -6,7 +6,7 @@ namespace CarService.Data.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    //[Table("User")]
+    [Table("User")]
     public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,24 +23,15 @@ namespace CarService.Data.Models
         public DateTime ModifyDate { get; set; }
 
         public bool IsActive { get; set; }
-
-        [Required]
-        [StringLength(50)]
+        
         public string Name { get; set; }
-
-        [Required]
-        [StringLength(50)]
+        
         public string Surname { get; set; }
-
-        [Required]
-        [StringLength(50)]
+        
         public string Email { get; set; }
-
-        [Required]
+        
         public string Password { get; set; }
-
-        [Required]
-        [StringLength(20)]
+        
         public string Pesel { get; set; }
 
         public DateTime DateofBirth { get; set; }

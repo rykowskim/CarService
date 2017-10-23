@@ -8,7 +8,7 @@ namespace CarService.Web.Infrastructure
 {
     public class NinjectDependencyResolver : IDependencyResolver 
     {
-        private IKernel _kernel;
+         private IKernel _kernel;
 
         public NinjectDependencyResolver(IKernel kernel)
         {
@@ -28,7 +28,8 @@ namespace CarService.Web.Infrastructure
 
         private void AddBindings()
         {
-            _kernel.Bind<ICarRepository>().To<CarRepository>();
+            _kernel.Bind<Data.Services.User.IUserService>().To<Data.Services.User.UserService>();
+            _kernel.Bind<Data.Services.Car.ICarService>().To<Data.Services.Car.CarService>();
         }
     }
 }
