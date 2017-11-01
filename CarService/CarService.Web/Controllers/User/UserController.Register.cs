@@ -1,15 +1,17 @@
-﻿using CarService.Web.ViewModels.User;
+﻿using CarService.Web.Mvc.Other;
+using CarService.Web.ViewModels.User;
 using System;
 using System.Web.Mvc;
 
 namespace CarService.Web.Controllers.User
 {
+    [AllowAnonymous]
     public partial class UserController
     {
         [HttpGet, Route("User/Register")]
         public ActionResult Register()
         {
-            var viewModel = new RegisterCreateViewModel();
+            var viewModel = new RegisterCreateViewModel(); 
             return View(viewModel);
         }
 
@@ -24,9 +26,9 @@ namespace CarService.Web.Controllers.User
 
             try
             {
-                if (_userService.IsExistsEmail(viewModel.Email))
+                if (_userService.IsExists(viewModel.Email))
                 {
-                    ModelState.AddModelError("Email", "Użytkownik o podanym adresie Email już istnieje");
+                    ModelState.AddModelError("Email", "Użytkownik o podanym adresie e-mail już istnieje");
                     return View(viewModel);
                 }
 
@@ -37,7 +39,7 @@ namespace CarService.Web.Controllers.User
                 throw ex;
             }
 
-            return View(viewModel);
+            return RedirectToAction("Index", "Home");
         }
     }
 }

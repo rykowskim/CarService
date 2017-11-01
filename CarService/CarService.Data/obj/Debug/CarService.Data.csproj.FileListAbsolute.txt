@@ -51,3 +51,16 @@ C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Data\obj\Debug\CarS
 C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Data\bin\WebActivator.dll
 C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Data\bin\WebActivatorEx.dll
 C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Data\obj\Debug\CarService.Data.csprojResolveAssemblyReference.cache
+C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Data\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Data\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Data\bin\Microsoft.Owin.dll
+C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Data\bin\Owin.dll
+C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Data\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Data\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Data\bin\Microsoft.Owin.xml
+C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Data\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Data\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Data\bin\Microsoft.Owin.Security.dll
+C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Data\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Data\bin\Microsoft.Owin.Security.xml
+C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Data\bin\Microsoft.Owin.Security.Cookies.xml

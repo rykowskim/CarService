@@ -1,7 +1,9 @@
-﻿using System;
+﻿using CarService.Web.Mvc.Other;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Net.Mail;
 
 namespace CarService.Web.ViewModels.User
 {
@@ -36,14 +38,11 @@ namespace CarService.Web.ViewModels.User
         [Required(ErrorMessage = "Pole PESEL jest wymagane")]
         public string Pesel { get; set; }
 
-        [DisplayName("Phone")]
-        public string Phone { get; set; }
-
-
+                
         public IEnumerable<ValidationResult> Validate (ValidationContext validationContext)
         {
-            if (!Email.Contains("@"))
-                yield return new ValidationResult("Błędny adres email", new[] { "Email" });
+            if (Email.Length < 6 && !Email.Contains("@"))
+                yield return new ValidationResult("Niepoprawny adres email", new[] { "Email" });
 
             if (Password.Length < 6)
                 yield return new ValidationResult("Hasło musi zawierać minimum 6 znaków", new[] { "Password" });
@@ -51,9 +50,25 @@ namespace CarService.Web.ViewModels.User
             if (Pesel.Length != 11) //todo sprawdzenie czy nie występuje jakiś znak
                 yield return new ValidationResult("Niepoprawny PESEL", new[] { "Pesel" });
 
-            //if (DateTime.Now.AddYears(-18). DateOfBirth) 18 lat = 567648000000 ms
-            //    yield return new ValidationResult("Osoba niepełnoletnia" + DateOfBirth + " " + DateTime.Now.AddYears(-18), new[] { "DateOfBirth" });
+            if (IsValidBirthDay()) 
+                yield return new ValidationResult("Musisz mieć ukończone 18 lat", new[] { "DateOfBirth" });
+
+            if (!RepeatPassword.Equals(Password))
+                yield return new ValidationResult("Hasła różnią się", new[] { "RepeatPassword" });
         }
+
+        private bool IsValidBirthDay()
+        {
+            const long AgeOfAdult = 567648000000;
+
+            var dt1900 = new DateTime(1900, 1, 1);
+            var current = DateTime.Now;
+            var spanCurrent = current - dt1900;
+            var spanDateOfBirth = DateOfBirth - dt1900;
+
+            var span = spanCurrent - spanDateOfBirth;
+            return span.TotalMilliseconds < AgeOfAdult;
+        }     
 
         public Data.Models.User ToUser()
         {
@@ -63,7 +78,7 @@ namespace CarService.Web.ViewModels.User
                 ModifyDate = DateTime.Now,
                 IsActive = true,
                 Email = Email,
-                Password = Password,
+                Password = Encrypt.EncryptPassword(Password),
                 Name = Name,
                 Surname = Surname,
                 DateofBirth = DateOfBirth,
