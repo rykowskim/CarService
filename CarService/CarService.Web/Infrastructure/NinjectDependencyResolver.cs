@@ -1,4 +1,5 @@
-﻿using CarService.Web.Services.User;
+﻿using CarService.Web.Services;
+using CarService.Web.Services.User;
 using Ninject;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,7 @@ namespace CarService.Web.Infrastructure
         private void AddBindings()
         {
             _kernel.Bind<IUserService>().To<UserService>();
+            _kernel.Bind<IAuthenticationService>().To<AuthenticationService>();
         }
     }
 }

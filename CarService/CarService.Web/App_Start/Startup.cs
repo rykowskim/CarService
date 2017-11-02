@@ -9,7 +9,7 @@ namespace CarService.Web.App_Start
             app.UseCookieAuthentication(new Microsoft.Owin.Security.Cookies.CookieAuthenticationOptions
             {
                 AuthenticationType = "ApplicationCookie",
-                LoginPath = new Microsoft.Owin.PathString("/login")
+                LoginPath = new Microsoft.Owin.PathString("/auth/login")
             });
         }
     }
