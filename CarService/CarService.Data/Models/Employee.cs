@@ -31,6 +31,10 @@ namespace CarService.Data.Models
         [StringLength(50)]
         public string Surname { get; set; }
 
+        public string Pesel { get; set; }
+
+        public string Phone { get; set; }
+
         public int Position_Id { get; set; }
 
         public decimal Salary { get; set; }

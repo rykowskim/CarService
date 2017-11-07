@@ -199,10 +199,14 @@
     <Compile Include="Mvc\Other\Encrypt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AuthenticationService.cs" />
+    <Compile Include="Services\Employee\EmployeeService.cs" />
+    <Compile Include="Services\Employee\IEmployeeService.cs" />
     <Compile Include="Services\IAuthenticationService.cs" />
     <Compile Include="Services\User\IUserService.cs" />
     <Compile Include="Services\User\UserService.cs" />
     <Compile Include="Services\User\UserService.IsExists.cs" />
+    <Compile Include="ViewModels\Home\StartPageViewModel.cs" />
+    <Compile Include="ViewModels\User\AuthenticatedUser.cs" />
     <Compile Include="ViewModels\User\LoginViewModel.cs" />
     <Compile Include="ViewModels\User\RegisterCreateViewModel.cs" />
   </ItemGroup>
@@ -215,6 +219,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Layout.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

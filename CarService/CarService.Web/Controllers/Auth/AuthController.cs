@@ -57,7 +57,7 @@ namespace CarService.Web.Controllers
 
             try
             {
-                _authenticationService.SignIn(user);
+                _authenticationService.SignIn(user);                              
                 return RedirectToAction("Index", "Home");
             }            
             catch(Exception ex)

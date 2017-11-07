@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Security.Claims;
+using System.Web.Mvc;
 
 namespace CarService.Web.Controllers
 {
@@ -6,6 +7,7 @@ namespace CarService.Web.Controllers
     {
         public ActionResult Index()
         {
+            var id = ((ClaimsIdentity)User.Identity).FindFirst("Id").Value;
             return View();
         }
     }

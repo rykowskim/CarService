@@ -33,12 +33,8 @@ namespace CarService.Web.ViewModels.User
         [DisplayName("Data urodzenia")]
         [Required(ErrorMessage = "Pole Data urodzenia jest wymagane")]
         public DateTime DateOfBirth { get; set; }
-
-        [DisplayName("PESEL")]
-        [Required(ErrorMessage = "Pole PESEL jest wymagane")]
-        public string Pesel { get; set; }
-
-                
+        
+        
         public IEnumerable<ValidationResult> Validate (ValidationContext validationContext)
         {
             if (Email.Length < 6 && !Email.Contains("@"))
@@ -46,10 +42,7 @@ namespace CarService.Web.ViewModels.User
 
             if (Password.Length < 6)
                 yield return new ValidationResult("Hasło musi zawierać minimum 6 znaków", new[] { "Password" });
-
-            if (Pesel.Length != 11) //todo sprawdzenie czy nie występuje jakiś znak
-                yield return new ValidationResult("Niepoprawny PESEL", new[] { "Pesel" });
-
+            
             if (IsValidBirthDay()) 
                 yield return new ValidationResult("Musisz mieć ukończone 18 lat", new[] { "DateOfBirth" });
 
@@ -81,8 +74,7 @@ namespace CarService.Web.ViewModels.User
                 Password = Encrypt.EncryptPassword(Password),
                 Name = Name,
                 Surname = Surname,
-                DateofBirth = DateOfBirth,
-                Pesel = Pesel
+                DateofBirth = DateOfBirth
             };
         }
     }
