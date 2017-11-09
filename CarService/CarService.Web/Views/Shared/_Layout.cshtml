@@ -68,7 +68,7 @@
                                 <i class="fa fa-user-circle fa-fw"></i>@User.Identity.Name<span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Profil</a></li>
+                                <li><a href="@Url.Action("ProfileEdit", "Employee")">Profil</a></li>
                                 <li class="divider"></li>
                                 <li><a href="@Url.Action("Signout", "Auth")">Wyloguj się</a></li>
                             </ul>
@@ -84,6 +84,7 @@
             </div>
         </div>
     </nav>
+    <div class="alert alert-info text-center">Uzupełnij swój profil pracownika</div>
     <div>
         @RenderBody()
         <footer>

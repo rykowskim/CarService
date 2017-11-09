@@ -62,7 +62,7 @@ namespace CarService.Web.Controllers
             }            
             catch(Exception ex)
             {
-                return View(viewModel);
+                throw ex;
             }                                             
         }
         //do innego pliku

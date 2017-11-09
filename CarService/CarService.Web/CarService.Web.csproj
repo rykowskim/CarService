@@ -187,6 +187,8 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="Controllers\Employee\EmployeeController.cs" />
+    <Compile Include="Controllers\Employee\EmployeeController.ProfileEdit.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Auth\AuthController.cs" />
     <Compile Include="Controllers\User\UserController.cs" />
@@ -205,8 +207,9 @@
     <Compile Include="Services\User\IUserService.cs" />
     <Compile Include="Services\User\UserService.cs" />
     <Compile Include="Services\User\UserService.IsExists.cs" />
+    <Compile Include="ViewModels\Employee\EmployeeEdit.cs" />
     <Compile Include="ViewModels\Home\StartPageViewModel.cs" />
-    <Compile Include="ViewModels\User\AuthenticatedUser.cs" />
+    <Compile Include="ViewModels\Shared\Address\AddressEdit.cs" />
     <Compile Include="ViewModels\User\LoginViewModel.cs" />
     <Compile Include="ViewModels\User\RegisterCreateViewModel.cs" />
   </ItemGroup>
@@ -320,11 +323,13 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\Auth\Login.cshtml" />
+    <Content Include="Views\Employee\ProfileEdit.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\AddressEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Properties\PublishProfiles\" />
-    <Folder Include="ViewModels\Address\" />
+    <Folder Include="Views\Employee\Partial\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -2,5 +2,6 @@
 {
     public class StartPageViewModel
     {
+        public string UserName { get; set; }
     }
 }
