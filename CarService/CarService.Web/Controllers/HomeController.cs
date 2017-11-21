@@ -15,7 +15,7 @@ namespace CarService.Web.Controllers
         {
             _employeeService = empoloyeeService;
         }
-
+        //[HttpGet, Route("Home")]
         public ActionResult Index()
         {
             var identity = (ClaimsIdentity)User.Identity;
