@@ -25,95 +25,95 @@ namespace CarService.Data.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<Address>()
-            //    .HasMany(e => e.Customer)
-            //    .WithRequired(e => e.Address)
-            //    .HasForeignKey(e => e.Address_Id)
-            //    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Address>()
+                .HasMany(e => e.Customer)
+                .WithRequired(e => e.Address)
+                .HasForeignKey(e => e.Address_Id)
+                .WillCascadeOnDelete(false);
 
-            //modelBuilder.Entity<Address>()
-            //    .HasMany(e => e.Employee)
-            //    .WithRequired(e => e.Address)
-            //    .HasForeignKey(e => e.Address_Id)
-            //    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Address>()
+                .HasMany(e => e.Employee)
+                .WithRequired(e => e.Address)
+                .HasForeignKey(e => e.Address_Id)
+                .WillCascadeOnDelete(false);
 
-            //modelBuilder.Entity<Car>()
-            //    .HasMany(e => e.Order)
-            //    .WithRequired(e => e.Car)
-            //    .HasForeignKey(e => e.Car_Id)
-            //    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Car>()
+                .HasMany(e => e.Order)
+                .WithRequired(e => e.Car)
+                .HasForeignKey(e => e.Car_Id)
+                .WillCascadeOnDelete(false);
 
-            //modelBuilder.Entity<Cost>()
-            //    .Property(e => e.Cost1)
-            //    .HasPrecision(16, 2);
+            modelBuilder.Entity<Cost>()
+                .Property(e => e.Cost1)
+                .HasPrecision(16, 2);
 
-            //modelBuilder.Entity<Customer>()
-            //    .HasMany(e => e.Car)
-            //    .WithRequired(e => e.Customer)
-            //    .HasForeignKey(e => e.Customer_Id)
-            //    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Customer>()
+                .HasMany(e => e.Car)
+                .WithRequired(e => e.Customer)
+                .HasForeignKey(e => e.Customer_Id)
+                .WillCascadeOnDelete(false);
 
-            //modelBuilder.Entity<Customer>()
-            //    .HasMany(e => e.Order)
-            //    .WithRequired(e => e.Customer)
-            //    .HasForeignKey(e => e.Customer_Id)
-            //    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Customer>()
+                .HasMany(e => e.Order)
+                .WithRequired(e => e.Customer)
+                .HasForeignKey(e => e.Customer_Id)
+                .WillCascadeOnDelete(false);
 
-            //modelBuilder.Entity<Employee>()
-            //    .Property(e => e.Salary)
-            //    .HasPrecision(16, 2);
+            modelBuilder.Entity<Employee>()
+                .Property(e => e.Salary)
+                .HasPrecision(16, 2);
 
-            //modelBuilder.Entity<Employee>()
-            //    .HasMany(e => e.Order)
-            //    .WithRequired(e => e.Employee)
-            //    .HasForeignKey(e => e.Employee_Id)
-            //    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Employee>()
+                .HasMany(e => e.Order)
+                .WithRequired(e => e.Employee)
+                .HasForeignKey(e => e.Employee_Id)
+                .WillCascadeOnDelete(false);
 
-            //modelBuilder.Entity<Order>()
-            //    .HasMany(e => e.Cost)
-            //    .WithRequired(e => e.Order)
-            //    .HasForeignKey(e => e.Order_Id)
-            //    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Order>()
+                .HasMany(e => e.Cost)
+                .WithRequired(e => e.Order)
+                .HasForeignKey(e => e.Order_Id)
+                .WillCascadeOnDelete(false);
 
-            //modelBuilder.Entity<OrderStatus>()
-            //    .Property(e => e.Description)
-            //    .IsFixedLength();
+            modelBuilder.Entity<OrderStatus>()
+                .Property(e => e.Description)
+                .IsFixedLength();
 
-            //modelBuilder.Entity<OrderStatus>()
-            //    .HasMany(e => e.Order)
-            //    .WithRequired(e => e.OrderStatus)
-            //    .HasForeignKey(e => e.OrderStatus_Id)
-            //    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<OrderStatus>()
+                .HasMany(e => e.Order)
+                .WithRequired(e => e.OrderStatus)
+                .HasForeignKey(e => e.OrderStatus_Id)
+                .WillCascadeOnDelete(false);
 
-            //modelBuilder.Entity<OrderType>()
-            //    .HasMany(e => e.Order)
-            //    .WithRequired(e => e.OrderType)
-            //    .HasForeignKey(e => e.OrderType_Id)
-            //    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<OrderType>()
+                .HasMany(e => e.Order)
+                .WithRequired(e => e.OrderType)
+                .HasForeignKey(e => e.OrderType_Id)
+                .WillCascadeOnDelete(false);
 
-            //modelBuilder.Entity<Position>()
-            //    .HasMany(e => e.Employee)
-            //    .WithRequired(e => e.Position)
-            //    .HasForeignKey(e => e.Position_Id)
-            //    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Position>()
+                .HasMany(e => e.Employee)
+                .WithRequired(e => e.Position)
+                .HasForeignKey(e => e.Position_Id)
+                .WillCascadeOnDelete(false);
 
-            //modelBuilder.Entity<Role>()
-            //    .HasMany(e => e.UserXRole)
-            //    .WithRequired(e => e.Role)
-            //    .HasForeignKey(e => e.Role_Id)
-            //    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<Role>()
+                .HasMany(e => e.UserXRole)
+                .WithRequired(e => e.Role)
+                .HasForeignKey(e => e.Role_Id)
+                .WillCascadeOnDelete(false);
 
-            //modelBuilder.Entity<User>()
-            //    .HasMany(e => e.Employee)
-            //    .WithRequired(e => e.User)
-            //    .HasForeignKey(e => e.User_Id)
-            //    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<User>()
+                .HasMany(e => e.Employee)
+                .WithRequired(e => e.User)
+                .HasForeignKey(e => e.User_Id)
+                .WillCascadeOnDelete(false);
 
-            //modelBuilder.Entity<User>()
-            //    .HasMany(e => e.UserXRole)
-            //    .WithRequired(e => e.User)
-            //    .HasForeignKey(e => e.User_Id)
-            //    .WillCascadeOnDelete(false);
+            modelBuilder.Entity<User>()
+                .HasMany(e => e.UserXRole)
+                .WithRequired(e => e.User)
+                .HasForeignKey(e => e.User_Id)
+                .WillCascadeOnDelete(false);
         }
     }
 }

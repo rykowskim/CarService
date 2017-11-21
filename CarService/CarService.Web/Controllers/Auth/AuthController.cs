@@ -1,11 +1,9 @@
-﻿using CarService.Data.Models;
-using CarService.Web.Mvc.Other;
+﻿using CarService.Web.Mvc.Other;
 using CarService.Web.Services;
 using CarService.Web.Services.User;
 using CarService.Web.ViewModels.User;
 using System;
 using System.Linq;
-using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 

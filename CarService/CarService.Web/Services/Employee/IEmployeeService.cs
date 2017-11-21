@@ -7,5 +7,6 @@ namespace CarService.Web.Services.Employee
         IEnumerable<Data.Models.Employee> Employees { get; }
 
         void Create(Data.Models.Employee employee);
+        void Update(Data.Models.Employee employee);
     }
 }

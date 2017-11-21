@@ -77,5 +77,19 @@ namespace CarService.Web.ViewModels.User
                 DateofBirth = DateOfBirth
             };
         }
+
+        public Data.Models.Employee ToEmployee(Data.Models.User user)
+        {
+            return new Data.Models.Employee
+            {
+                IsActive = true,
+                CreateDate = DateTime.Now,
+                ModifyDate = DateTime.Now,
+                Name = Name,
+                Surname = Surname,
+                User = user,
+                IsVerified = false
+            };
+        }
     }
 }

@@ -32,8 +32,10 @@ namespace CarService.Web.Controllers.User
                     ModelState.AddModelError("Email", "Użytkownik o podanym adresie e-mail już istnieje");
                     return View(viewModel);
                 }
-                
-                _userService.Create(viewModel.ToUser());
+
+                var user = viewModel.ToUser();
+                _userService.Create(user);
+                _employeeService.Create(viewModel.ToEmployee(user));
             }
             catch (Exception ex)
             {

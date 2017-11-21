@@ -23,25 +23,23 @@ namespace CarService.Data.Models
 
         public bool IsActive { get; set; }
 
-        [Required]
-        [StringLength(50)]
         public string Name { get; set; }
 
-        [Required]
-        [StringLength(50)]
         public string Surname { get; set; }
 
         public string Pesel { get; set; }
 
         public string Phone { get; set; }
 
-        public int Position_Id { get; set; }
+        public int? Position_Id { get; set; }
 
         public decimal Salary { get; set; }
 
-        public int Address_Id { get; set; }
+        public int? Address_Id { get; set; }
 
         public int User_Id { get; set; }
+
+        public bool IsVerified { get; set; }
 
         public virtual Address Address { get; set; }
 

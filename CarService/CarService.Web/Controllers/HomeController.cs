@@ -1,4 +1,5 @@
-﻿using CarService.Web.ViewModels.Home;
+﻿using CarService.Web.Services.Employee;
+using CarService.Web.ViewModels.Home;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -8,12 +9,24 @@ namespace CarService.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IEmployeeService _employeeService;
+        
+        public HomeController(IEmployeeService empoloyeeService)
+        {
+            _employeeService = empoloyeeService;
+        }
+
         public ActionResult Index()
         {
             var identity = (ClaimsIdentity)User.Identity;
             IEnumerable<Claim> claims = identity.Claims;
-            var surname = claims.Where(x => x.Type == ClaimTypes.Surname).Select(w => w.Value).FirstOrDefault();
-            var viewModel = new StartPageViewModel { UserName = User.Identity.Name };
+            var userId = int.Parse(claims.Where(x => x.Type == "Id").Select(w => w.Value).FirstOrDefault());
+            
+            var viewModel = new StartPageViewModel
+            {
+                UserName = User.Identity.Name,
+                IsVerified = _employeeService.Employees.Where(x => x.User_Id == userId && x.IsActive).FirstOrDefault().IsVerified
+            };
             return View(viewModel);
         }
     }

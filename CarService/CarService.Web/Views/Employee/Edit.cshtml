@@ -1,0 +1,56 @@
+﻿@model CarService.Web.ViewModels.Employee.EmployeeEdit
+<div class="container">
+    <div class="page-header"> @*style="color: #135bd3; >*@
+        <h3>Profil pracownika</h3>
+    </div>
+    @using (Html.BeginForm("Edit", "Employee"))
+    {
+        <div class="panel panel-body panel-default" style="border-radius: 0px;">
+            <div class="row">
+                @Html.ValidationSummary()
+                <div class="col-md-5 col-md-push-1">
+                    <div class="form-group row">
+                        @Html.LabelFor(m => m.Name, new { @class = "control-label col-md-3" })
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(m => m.Surname, new { @class = "control-label col-md-3" })
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(m => m.Surname, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(m => m.Pesel, new { @class = "control-label col-md-3" })
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(m => m.Pesel, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(m => m.Phone, new { @class = "control-label col-md-3" })
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(m => m.Salary, new { @class = "control-label col-md-3" })
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(m => m.Salary, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        @Html.LabelFor(m => m.PositionId, new { @class = "control-label col-md-3" })
+                        <div class="col-md-6">
+                            @Html.DropDownListFor(m => m.PositionId, Model.Positions, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    @Html.EditorFor(m => m.AddressEdit, "Shared/EditorTemplates/AddressEdit")
+                </div>          
+            </div>
+            <button type="submit" class="btn btn-primary pull-right">Zapisz</button> 
+        </div>
+    }
+</div>

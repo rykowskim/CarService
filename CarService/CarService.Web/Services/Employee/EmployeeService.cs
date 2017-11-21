@@ -1,5 +1,4 @@
 ﻿using CarService.Data.Models;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace CarService.Web.Services.Employee
@@ -8,14 +7,20 @@ namespace CarService.Web.Services.Employee
     {
         private CarServiceContext dbContext = new CarServiceContext();
 
-        public IEnumerable<Data.Models.Employee> Employees
+        public IEnumerable<Data.Models.Employee> Employees => dbContext.Employee;
+
+        public void Create(Data.Models.Employee employee) 
         {
-            get { return dbContext.Employee; }
+            dbContext.Entry(employee.User).State = System.Data.Entity.EntityState.Unchanged;
+            dbContext.Employee.Add(employee);
+            dbContext.SaveChanges();
         }
 
-        public void Create(Data.Models.Employee employee)
+        public void Update(Data.Models.Employee employee)
         {
-            dbContext.Employee.Add(employee);
+            dbContext.Entry(employee.Position).State = System.Data.Entity.EntityState.Unchanged;
+            //dbContext.Entry(employee).CurrentValues.SetValues(employee);
+            dbContext.Entry(employee).State = System.Data.Entity.EntityState.Modified;
             dbContext.SaveChanges();
         }
     }
