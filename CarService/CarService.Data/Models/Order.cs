@@ -33,8 +33,9 @@ namespace CarService.Data.Models
 
         public int OrderStatus_Id { get; set; }
 
-        [Required]
-        public string Description { get; set; }
+        public string RepairDescription { get; set; }
+
+        public string Symptoms { get; set; }
 
         public virtual Car Car { get; set; }
 

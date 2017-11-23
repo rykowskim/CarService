@@ -191,6 +191,8 @@
     <Compile Include="Controllers\Employee\EmployeeController.Edit.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Auth\AuthController.cs" />
+    <Compile Include="Controllers\Order\OrderController.Create.cs" />
+    <Compile Include="Controllers\Order\OrderController.cs" />
     <Compile Include="Controllers\User\UserController.cs" />
     <Compile Include="Controllers\User\UserController.Register.cs" />
     <Compile Include="Global.asax.cs">
@@ -203,9 +205,17 @@
     <Compile Include="Services\Address\AddressService.cs" />
     <Compile Include="Services\Address\IAddressService.cs" />
     <Compile Include="Services\AuthenticationService.cs" />
+    <Compile Include="Services\Car\CarsService.cs" />
+    <Compile Include="Services\Car\ICarsService.cs" />
+    <Compile Include="Services\Customer\CustomerService.cs" />
+    <Compile Include="Services\Customer\ICustomerService.cs" />
     <Compile Include="Services\Employee\EmployeeService.cs" />
     <Compile Include="Services\Employee\IEmployeeService.cs" />
     <Compile Include="Services\IAuthenticationService.cs" />
+    <Compile Include="Services\Order\IOrderService.cs" />
+    <Compile Include="Services\Order\OrderService.cs" />
+    <Compile Include="Services\Order\OrderService.GetCreateViewModel.cs" />
+    <Compile Include="Services\Other\OtherService.cs" />
     <Compile Include="Services\Position\IPositionService.cs" />
     <Compile Include="Services\Position\PositionService.cs" />
     <Compile Include="Services\User\IUserService.cs" />
@@ -213,6 +223,7 @@
     <Compile Include="Services\User\UserService.IsExists.cs" />
     <Compile Include="ViewModels\Employee\EmployeeEdit.cs" />
     <Compile Include="ViewModels\Home\StartPageViewModel.cs" />
+    <Compile Include="ViewModels\Order\Create.cs" />
     <Compile Include="ViewModels\Shared\Address\AddressEdit.cs" />
     <Compile Include="ViewModels\User\LoginViewModel.cs" />
     <Compile Include="ViewModels\User\RegisterCreateViewModel.cs" />
@@ -329,6 +340,7 @@
     <Content Include="Views\Auth\Login.cshtml" />
     <Content Include="Views\Employee\Edit.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\AddressEdit.cshtml" />
+    <Content Include="Views\Order\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

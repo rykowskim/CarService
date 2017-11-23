@@ -1,6 +1,9 @@
 ﻿using CarService.Web.Services;
 using CarService.Web.Services.Address;
+using CarService.Web.Services.Car;
+using CarService.Web.Services.Customer;
 using CarService.Web.Services.Employee;
+using CarService.Web.Services.Order;
 using CarService.Web.Services.Position;
 using CarService.Web.Services.User;
 using Ninject;
@@ -37,6 +40,10 @@ namespace CarService.Web.Infrastructure
             _kernel.Bind<IEmployeeService>().To<EmployeeService>();
             _kernel.Bind<IPositionService>().To<PositionService>();
             _kernel.Bind<IAddressService>().To<AddressService>();
+            _kernel.Bind<ICustomerService>().To<CustomerService>();
+            _kernel.Bind<IOrderService>().To<OrderService>();
+            _kernel.Bind<ICarsService>().To<CarsService>();
+
         }
     }
 }
