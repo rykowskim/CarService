@@ -1,12 +1,93 @@
 ﻿@model CarService.Web.ViewModels.Order.Create
-
 <div class="container">
     <div class="page-header">
         <h3>Nowa naprawa</h3>
     </div>
-    <div class="panel panel-default" style="border-radius: 0px;">
-        <div class="panel panel-heading" style="background-color: white; height:55px; border-radius: 0px;">
-            <div class="btn btn-primary pull-right" style="border-radius: 0px;">Stwórz</div>
+    @using (Html.BeginForm("Create", "Order"))
+    {
+        <div class="panel panel-body panel-default" style="border-radius:0px">
+            <div class="row form-group">
+                <div class="col-sm-3">
+                    @Html.LabelFor(m => m.OrderTypeId, new { @class = "control-label" })
+                    @Html.DropDownListFor(m => m.OrderTypeId, Model.OrderTypes, "--Wybierz--", new { @class = "form-control", @style = "border-radius: 0px" })
+                </div>
+                <div class="col-md-4 col-md-push-1">
+                    @Html.LabelFor(m => m.CustomerId, new { @class = "control-label" })
+                    <div class="input-group">
+                        @Html.DropDownListFor(m => m.CustomerId, Model.Customers, "--Wybierz--", new { @class = "form-control", @style = "border-radius: 0px" })
+                        <span class="input-group-btn">
+                            <a href="@Url.Action("Create", "Customer")" class="btn btn-primary" style="border-radius: 0px;">
+                                <span class="fa fa-plus fa-fw"></span>
+                                Nowy
+                            </a>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-3 col-md-push-2">
+                    @Html.LabelFor(m => m.OrderStatusId)
+                    @Html.DropDownListFor(m => m.OrderStatusId, Model.OrderStatuses, "--Wybierz--", new { @class = "form-control", @style = "border-radius: 0px" })
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-4">
+                    @Html.LabelFor(m => m.RepairDescription, new { @class = "control-label" })
+                    @Html.TextAreaFor(m => m.RepairDescription, new { @class = "form-control", @style = "border-radius: 0px;", @rows = "4" })
+                </div>
+                <div class="col-md-4">
+                    @Html.LabelFor(m => m.CarId, new { @class = "control-label" })
+                    <div class="input-group">
+                        @Html.DropDownListFor(m => m.CarId, Model.Cars, "--Wybierz--", new { @class = "form-control", @style = "border-radius: 0px" })
+                        <span class="input-group-btn">
+                            @*<a href="@Url.Action("Create", "Car")" class="btn btn-primary" style="border-radius: 0px;">*@
+                            <button type="button" id="BtnNewCar" class="btn btn-primary" style="border-radius:0px;">
+                                <span class="fa fa-plus fa-fw"></span>
+                                Nowy
+                            </button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-3 col-md-push-1">
+                    @Html.LabelFor(m => m.EmployeeId)
+                    @Html.DropDownListFor(m => m.EmployeeId, Model.Empolyees, "--Wybierz--", new { @class = "form-control", @style = "border-radius: 0px" })
+                </div>
+            </div>
+            <a href="#" class="btn btn-default pull-left" style="border-radius:0px;"><i class="fa fa-arrow-left fa-fw"></i>Powrót</a>
+            <input type="submit" class="btn btn-primary pull-right" style="border-radius:0px;" value="Zapisz" />
         </div>
-    </div>
+    }
 </div>
+<script>
+    //pobieranie samochodu
+    $(function () {
+        $('#@Html.IdFor(m => m.CustomerId)').on('change', function () {
+            var customerId = $('#@Html.IdFor(m => m.CustomerId)').val();
+            var getUrl = '@Url.Action("GetCars", "Car")' + '/' + customerId;
+            console.log(getUrl);
+            $.ajax({
+                url: getUrl,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    var cars = $('#@Html.IdFor(m => m.CarId)');
+                    cars.empty();
+                    cars.append($('<option>').text('--Wybierz--'));
+
+                    $.each(data, function (i, item) {
+                        cars.append($('<option>').val(item.Value).text(item.Text));
+                    });
+                },
+                error: function () {
+                    console.log('Błąd pobierania danych');
+                }
+            });
+        })
+    });
+
+    $(function () {
+        $('#BtnNewCar').on('click', function () {
+            var id = $('#@Html.IdFor(m => m.CustomerId) :selected').val();
+            var url = '@Url.Action("Create", "Car", new { id = "--id--" })'
+            window.location.href = url.replace("--id--", id)
+        });
+    });
+</script>

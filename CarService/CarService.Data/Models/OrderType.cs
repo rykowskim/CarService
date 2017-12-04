@@ -23,17 +23,9 @@ namespace CarService.Data.Models
 
         public bool IsActive { get; set; }
 
-        [Required]
-        [StringLength(50)]
         public string Name { get; set; }
 
-        [Required]
-        [StringLength(100)]
         public string Description { get; set; }
-
-        [Required]
-        [StringLength(50)]
-        public string TableName { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Order { get; set; }

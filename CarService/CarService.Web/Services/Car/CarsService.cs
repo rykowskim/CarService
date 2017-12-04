@@ -8,5 +8,12 @@ namespace CarService.Web.Services.Car
         private CarServiceContext dbContext = new CarServiceContext();
 
         public IEnumerable<Data.Models.Car> Cars => dbContext.Car;
+
+        public void Create(Data.Models.Car car)
+        {
+            dbContext.Entry(car.Customer).State = System.Data.Entity.EntityState.Unchanged;
+            dbContext.Car.Add(car);
+            dbContext.SaveChanges();
+        }
     }
 }

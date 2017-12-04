@@ -1,0 +1,72 @@
+﻿@model CarService.Web.ViewModels.Car.CarCreate
+
+<div class="container">
+    <hr />
+    @using (Html.BeginForm("Create", "Car"))
+    {
+        @Html.ValidationSummary()
+        <div class="panel panel-primary" style="border-radius: 0px;">
+            <div class="panel-heading" style="border-radius:0px;">
+                <div class="panel-title" style="border-radius:0px">
+                    <h4 class="text-center">Dodawanie samochodu</h4>
+                </div>
+            </div>
+            <div class="panel-body" style="border-radius:0px;">
+                <div class="row">
+                    <div class="col-md-6 col-md-push-4">
+                        <div class="form-group row">
+                            @Html.LabelFor(m => m.CustomerId, new { @class = "control-label col-md-2" })
+                            <div class="col-md-5">
+                                @Html.DropDownListFor(m => m.CustomerId, Model.Customers, "--Wybierz--", new { @class = "form-control", @style = "border-radius:0px" })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            @Html.LabelFor(m => m.Mark, new { @class = "control-label col-md-2" })
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(m => m.Mark, new { @class = "form-control", @style = "border-radius:0px" })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            @Html.LabelFor(m => m.Model, new { @class = "control-label col-md-2" })
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(m => m.Model, new { @class = "form-control", @style = "border-radius:0px" })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            @Html.LabelFor(m => m.Engine, new { @class = "control-label col-md-2" })
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    @Html.TextBoxFor(m => m.Engine, new { @class = "form-control", @style = "border-radius:0px" })
+                                    <span class="input-group-addon" style="border-radius:0px;">cm<sup>3</sup></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            @Html.LabelFor(m => m.ProductYear, new { @class = "control-label col-md-2" })
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(m => m.ProductYear, new { @class = "form-control", @style = "border-radius:0px" })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            @Html.LabelFor(m => m.RegisterNumber, new { @class = "control-label col-md-2" })
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(m => m.RegisterNumber, new { @class = "form-control", @style = "border-radius:0px" })
+                            </div>
+                        </div>
+                    </div>
+                
+                </div>
+                <input type="submit" class="btn btn-primary pull-right" style="border-radius:0px" value="Zapisz" />
+            </div>
+        </div>
+    }
+</div>
+<script>
+    $('#@Html.IdFor(m => m.ProductYear)').inputmask({
+        'mask': '9999'
+    })
+
+    $('#@Html.IdFor(m => m.Engine)').inputmask({
+        'mask': '9,999'
+    })
+</script>

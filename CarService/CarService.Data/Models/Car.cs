@@ -23,24 +23,14 @@ namespace CarService.Data.Models
 
         public bool IsActive { get; set; }
 
-        [Required]
-        [StringLength(50)]
         public string Mark { get; set; }
 
-        [Required]
-        [StringLength(50)]
         public string Model { get; set; }
 
-        [Required]
-        [StringLength(50)]
-        public string ProductYear { get; set; }
+        public int ProductYear { get; set; }
 
-        [Required]
-        [StringLength(20)]
-        public string Engine { get; set; }
+        public decimal Engine { get; set; }
 
-        [Required]
-        [StringLength(20)]
         public string RegisterNumber { get; set; }
 
         public int Customer_Id { get; set; }

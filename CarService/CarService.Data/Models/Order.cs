@@ -35,8 +35,6 @@ namespace CarService.Data.Models
 
         public string RepairDescription { get; set; }
 
-        public string Symptoms { get; set; }
-
         public virtual Car Car { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

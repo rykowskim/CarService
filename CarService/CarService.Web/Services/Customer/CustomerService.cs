@@ -8,5 +8,11 @@ namespace CarService.Web.Services.Customer
         private CarServiceContext dbContext = new CarServiceContext();
 
         public IEnumerable<Data.Models.Customer> Customers => dbContext.Customer;
+
+        public void Create(Data.Models.Customer customer)
+        {
+            dbContext.Customer.Add(customer);
+            dbContext.SaveChanges();
+        }
     }
 }

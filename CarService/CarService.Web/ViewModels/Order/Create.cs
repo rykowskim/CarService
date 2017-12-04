@@ -1,4 +1,4 @@
-﻿using CarService.Web.Services.Other;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -12,11 +12,11 @@ namespace CarService.Web.ViewModels.Order
         public int CustomerId { get; set; }
         public IEnumerable<SelectListItem> Customers { get; set; }
 
-        [DisplayName("Typ zlecenia"), Required(ErrorMessage = "Typ zlecenia jest wymagany")]
+        [DisplayName("Typ"), Required(ErrorMessage = "Typ zlecenia jest wymagany")]
         public int OrderTypeId { get; set; }
         public IEnumerable<SelectListItem> OrderTypes { get; set; }
 
-        [DisplayName("Przypisz do")]
+        [DisplayName("Przypisz do pracownika")]
         public int EmployeeId { get; set; }
         public IEnumerable<SelectListItem> Empolyees { get; set; }
 
@@ -29,7 +29,31 @@ namespace CarService.Web.ViewModels.Order
         public IEnumerable<SelectListItem> OrderStatuses { get; set; }
 
         [DisplayName("Uszkodzenia")]
-        public string Symptoms { get; set; }
+        public string RepairDescription { get; set; }
+
+        private readonly Data.Models.Order _order;
+
+        public Create(Data.Models.Order order)
+        {
+            _order = order;
+        }
+
+
+        public Data.Models.Order ToOrder()
+        {
+            _order.CreateDate = DateTime.Now;
+            _order.ModifyDate = DateTime.Now;
+            _order.IsActive = true;
+            _order.Customer = new Data.Models.Customer { Id = CustomerId };
+            _order.OrderType = new Data.Models.OrderType { Id = OrderTypeId };
+            _order.Employee = new Data.Models.Employee { Id = EmployeeId };
+            _order.Car = new Data.Models.Car { Id = CarId };
+            _order.OrderStatus = new Data.Models.OrderStatus { Id = OrderStatusId };
+            _order.RepairDescription = RepairDescription;
+
+            return _order;
+        }
 
     }
+
 }
