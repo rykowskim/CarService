@@ -3,18 +3,16 @@
 <div class="container">
     <div class="page-header">
         <h3>
-            Zlecenie <b>ID: @Model.Id</b>
+            Id zlecenia: <bold>@Model.Id</bold>
         </h3>
     </div>
     <div class="panel panel-default panel-body" style="border-radius: 0px;">
         <div class="row">
             <div class="col-md-8 col-md-push-1">
                 <div class="form-group row">
-                    @*@Html.LabelFor(m => m.Customer, new { @class = "control-label col-md-1" })*@
                     <span class="col-md-2">Klient:</span>
                     <div class="col-md-6">
                         <p><b>@Model.Customer</b></p>
-                        @*@Html.LabelFor(m => m.Customer, new { @class = "form-control" })*@
                     </div>
                 </div>
                 <div class="form-group row">
@@ -53,12 +51,12 @@
                     <button type="button" class="btn btn-primary pull-right" id="BtnEdit" style="border-radius: 0px; width:100px;">Edycja</button>
                 </div>
                 <div class="row">
-                    <button type="button" class="btn btn-default pull-right" style="border-radius: 0px; border-color:blue; width:100px;">Powrót</button>
+                    <a href="@Model.ReturnUrl" class="btn btn-default pull-right" style="border-radius: 0px; width:100px;">Powrót</a>
                 </div>
             </div>
         </div>
     </div>
-    @using (Html.BeginForm("Edit", "Order"))
+    @using (Html.BeginForm("Edit", "Order", new { returnUrl = Model.ReturnUrl}))
     {
         <div class="panel panel-default panel-body panel-edit hidden" style="border-radius: 0px; ">
             <div class="col-md-push-1">
@@ -67,10 +65,10 @@
                         @Html.LabelFor(m => m.OrderStatus, new { @class = "control-label" })
                         @Html.DropDownListFor(m => m.OrderStatusId, Model.OrderStatuses, "--Wybierz--", new { @class = "form-control", @style = "border-radius: 0px" })
                     </div>
-                    @*<div class="col-md-3">
+                    <div class="col-md-3">
                         @Html.LabelFor(m => m.Employee)
                         @Html.DropDownListFor(m => m.EmployeeId, Model.Employees, "--Wybierz--", new { @class = "form-control", @style = "border-radius: 0px" })
-                    </div>*@
+                    </div>
                     <div class="col-md-4">
                         @Html.LabelFor(m => m.RepairDescription, new { @class = "control-label" })
                         @Html.TextAreaFor(m => m.RepairDescription, new { @class = "form-control", @style = "border-radius: 0px;", @rows = "4" })

@@ -60,9 +60,27 @@
                         </div>
                     </form>
                     <ul class="nav navbar-nav">
-                        <li><a href="@Url.Action("Create", "Order")">Nowa naprawa</a></li>
+                        
                         @*<li class="divider-vertical"></li>*@
                         @*<li><a href="#">Link</a></li>*@
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                Zlecenia<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="@Url.Action("Create", "Order", new { returnUrl = HttpContext.Current.Request.Url })">
+                                        <span class="fa fa-plus-circle fa-fw"></span> Nowe zlecenie
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="@Url.Action("Search", "Order")">
+                                        <span class="fa fa-list fa-fw"></span> Zlecenia
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">                    
                         <li class="dropdown">

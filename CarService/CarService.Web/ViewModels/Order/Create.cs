@@ -31,6 +31,8 @@ namespace CarService.Web.ViewModels.Order
         [DisplayName("Uszkodzenia")]
         public string RepairDescription { get; set; }
 
+        public string ReturnUrl { get; set; }
+
         private readonly Data.Models.Order _order;
 
         public Create(Data.Models.Order order)

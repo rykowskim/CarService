@@ -86,6 +86,12 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -190,6 +196,8 @@
     <Compile Include="Controllers\Car\CarController.Create.cs" />
     <Compile Include="Controllers\Car\CarController.cs" />
     <Compile Include="Controllers\Car\CarController.GetCars.cs" />
+    <Compile Include="Controllers\Cost\CostController.Create.cs" />
+    <Compile Include="Controllers\Cost\CostController.cs" />
     <Compile Include="Controllers\Customer\CustomerController.Create.cs" />
     <Compile Include="Controllers\Customer\CustomerController.cs" />
     <Compile Include="Controllers\Employee\EmployeeController.cs" />
@@ -199,6 +207,7 @@
     <Compile Include="Controllers\Order\OrderController.Create.cs" />
     <Compile Include="Controllers\Order\OrderController.cs" />
     <Compile Include="Controllers\Order\OrderController.Edit.cs" />
+    <Compile Include="Controllers\Order\OrderController.Search.cs" />
     <Compile Include="Controllers\User\UserController.cs" />
     <Compile Include="Controllers\User\UserController.Register.cs" />
     <Compile Include="Global.asax.cs">
@@ -221,6 +230,7 @@
     <Compile Include="Services\Order\IOrderService.cs" />
     <Compile Include="Services\Order\OrderService.cs" />
     <Compile Include="Services\Order\OrderService.GetCreateViewModel.cs" />
+    <Compile Include="Services\Order\OrderService.Search.cs" />
     <Compile Include="Services\Other\OtherService.cs" />
     <Compile Include="Services\Position\IPositionService.cs" />
     <Compile Include="Services\Position\PositionService.cs" />
@@ -228,11 +238,14 @@
     <Compile Include="Services\User\UserService.cs" />
     <Compile Include="Services\User\UserService.IsExists.cs" />
     <Compile Include="ViewModels\Car\CarCreate.cs" />
+    <Compile Include="ViewModels\Cost\EditCost.cs" />
     <Compile Include="ViewModels\Customer\CustomerEdit.cs" />
     <Compile Include="ViewModels\Employee\EmployeeEdit.cs" />
     <Compile Include="ViewModels\Home\StartPageViewModel.cs" />
     <Compile Include="ViewModels\Order\Create.cs" />
     <Compile Include="ViewModels\Order\EditOrder.cs" />
+    <Compile Include="ViewModels\Order\OrderListFilters.cs" />
+    <Compile Include="ViewModels\Order\SearchResult.cs" />
     <Compile Include="ViewModels\Shared\Address\AddressEdit.cs" />
     <Compile Include="ViewModels\User\LoginViewModel.cs" />
     <Compile Include="ViewModels\User\RegisterCreateViewModel.cs" />
@@ -247,6 +260,7 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\Layout.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -392,6 +406,8 @@
     <Content Include="Views\Customer\Customer\Partial\_Edit.cshtml" />
     <Content Include="Views\Car\Create.cshtml" />
     <Content Include="Views\Order\Edit.cshtml" />
+    <Content Include="Views\Order\Search.cshtml" />
+    <Content Include="Views\Cost\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

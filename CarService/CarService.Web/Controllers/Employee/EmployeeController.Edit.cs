@@ -60,6 +60,7 @@ namespace CarService.Web.Controllers.Employee
             catch (Exception ex)
             {
                 return View(viewModel);
+                throw ex;
             }
 
             return RedirectToAction("Index", "Home");

@@ -1,0 +1,56 @@
+﻿@model CarService.Web.ViewModels.Cost.EditCost
+<div class="container">
+    <hr />
+    @using (Html.BeginForm("Create", "Cost", new { id = Model.Order.Id }, FormMethod.Post))
+    {
+        <div class="panel panel-primary" style="border-radius:0px;">
+            <div class="panel-heading" style="border-radius:0px;">
+                <div class="panel-title text-center" style="font-size:20px;">Dodaj wycenę - Id zlecenia: @Model.Order.Id</div>
+            </div>
+            <div class="panel-body">
+                <div class="form-group row col-md-offset-4">
+                    @Html.LabelFor(m => m.Order.Customer, new { @class = "control-label col-md-1", @style = "line-height: 32px; padding: 0" })
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(m => m.Order.Customer, new { @disabled = "disabled", @class = "form-control", @style = "border-radius:0px" })
+                    </div>
+                </div>
+                <div class="form-group row col-md-offset-4">
+                    @Html.LabelFor(m => m.Order.Car, new { @class = "control-label col-md-1", @style = "line-height: 32px; padding: 0" })
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(m => m.Order.Car, new { @disabled = "disabled", @class = "form-control", @style = "border-radius:0px" })
+                    </div>
+                </div>
+                <div class="form-group row col-md-offset-4">
+                    @Html.Label("Opis", new { @class = "control-label col-md-1", @style = "line-height: 32px; padding: 0" })
+                    <div class="col-md-5">
+                        @Html.TextAreaFor(m => m.Order.RepairDescription, new { @class = "form-control", @style = "border-radius:0px", @disabled = "disbaled", @rows = 3 })
+                    </div>
+                </div>
+                <hr />
+                <div class="form-group row col-md-offset-4">
+                    @Html.LabelFor(m => m.Description, new { @class = "control-label col-md-1", @style = "line-height: 32px; padding: 0" })
+                    <div class="col-md-5">
+                        @Html.TextAreaFor(m => m.Description, new { @class = "form-control", @rows = 3 })
+                    </div>
+                </div>
+                <div class="form-group row col-md-offset-4">
+                    @Html.LabelFor(m => m.Price, new { @class = "control-label col-md-1", @style = "line-height: 32px; padding: 0" })
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+                            <span class="input-group-addon">zł</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer clearfix">
+                <div class="pull-right">
+                    <button type="submit" class="btn btn-sm btn-success" style="border-radius:0px;">Zapisz</button>
+                </div>
+                <div class="pull-left">
+                    <button type="button" class="btn btn-sm btn-danger" style="border-radius:0px;">Anuluj</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>

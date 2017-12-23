@@ -9,7 +9,7 @@ namespace CarService.Web.Controllers.Order
     public partial class OrderController
     {
         [HttpGet, Route("Order/Edit/{id}")]
-        public ActionResult Edit([Bind(Prefix = "id")]int orderId)
+        public ActionResult Edit([Bind(Prefix = "id")]int orderId, string returnUrl)
         {
             var order = _orderService.Orders.Where(x => x.Id == orderId && x.IsActive).FirstOrDefault();
             if (order == null)
@@ -17,30 +17,21 @@ namespace CarService.Web.Controllers.Order
                 return RedirectToAction("Index", "Home");
             }
 
+            //przenieść do serwisu
             var viewModel = new EditOrder(order)
             {
-                Id = order.Id,
-                Car = string.Format("{0} {1}", order.Car.Mark, order.Car.Model),
-                Customer = string.Format("{0} {1}", order.Customer.Name, order.Customer.Surname),
-                Employee = string.Format("{0} {1}", order.Employee.Name, order.Employee.Surname),
-                OrderStatus = order.OrderStatus.Name,
-                OrderType = order.OrderType.Name,
-                RepairDescription = order.RepairDescription,
-                EmployeeId = order.Employee.Id,
-                OrderStatusId = order.OrderStatus.Id,
-                OrderStatuses = OtherService.GetOrderStatuses(),
                 Employees = _employeeService.Employees.Select(n => new SelectListItem
                 {
                     Value = n.Id.ToString(),
                     Text = string.Format("{0} {1}", n.Name, n.Surname)
                 }),
+                ReturnUrl = returnUrl
             };
-
             return View(viewModel);
         }
 
         [HttpPost, Route("Order/Edit/{id}"), ActionName("Edit")]
-        public ActionResult EditPost([Bind(Prefix = "id")]int orderId)
+        public ActionResult EditPost([Bind(Prefix = "id")]int orderId, string returnUrl)
         {
             var order = _orderService.Orders.Where(x => x.Id == orderId && x.IsActive).FirstOrDefault();
             if (order == null)
@@ -48,36 +39,30 @@ namespace CarService.Web.Controllers.Order
                 return RedirectToAction("Index", "Home");
             }
 
+            // przenieść do serwisu
             var viewModel = new EditOrder(order)
             {
-                Id = order.Id,
-                Car = string.Format("{0} {1}", order.Car.Mark, order.Car.Model),
-                Customer = string.Format("{0} {1}", order.Customer.Name, order.Customer.Surname),
-                Employee = string.Format("{0} {1}", order.Employee.Name, order.Employee.Surname),
-                OrderStatus = order.OrderStatus.Name,
-                OrderType = order.OrderType.Name,
-                RepairDescription = order.RepairDescription,
-                EmployeeId = order.Employee.Id,
-                OrderStatusId = order.OrderStatus.Id,
-                OrderStatuses = OtherService.GetOrderStatuses(),
                 Employees = _employeeService.Employees.Select(n => new SelectListItem
                 {
                     Value = n.Id.ToString(),
                     Text = string.Format("{0} {1}", n.Name, n.Surname)
                 }),
+                ReturnUrl = returnUrl
             };
 
-            if (!TryUpdateModel(viewModel))
+            if (!TryUpdateModel(viewModel) || !ModelState.IsValid)
             {
                 return View(viewModel);
             }
 
             try
             {
-                var toEdit = viewModel.ToEdit();
-                _orderService.Update(toEdit);
+                _orderService.Update(viewModel.ToEdit());
 
-                return RedirectToAction("Edit", "Order", new { id = order.Id });
+                if (viewModel.OrderStatusId == 4) //do odbioru
+                    return RedirectToAction("Create", "Cost", new { id = order.Id });
+
+                return Redirect(viewModel.ReturnUrl);
             }
             catch (Exception ex)
             {

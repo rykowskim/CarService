@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using CarService.Web.Services.Other;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Web.Mvc;
 
@@ -26,17 +27,29 @@ namespace CarService.Web.ViewModels.Order
         public IEnumerable<SelectListItem> OrderStatuses { get; set; }
         public IEnumerable<SelectListItem> Employees { get; set; }
 
+        public string ReturnUrl { get; set; }
+
         private readonly Data.Models.Order _order;
 
         public EditOrder(Data.Models.Order order)
         {
             _order = order;
+            Id = order.Id;
+            Car = string.Format("{0} {1}", order.Car.Mark, order.Car.Model);
+            Customer = string.Format("{0} {1}", order.Customer.Name, order.Customer.Surname);
+            Employee = string.Format("{0} {1}", order.Employee.Name, order.Employee.Surname);
+            OrderStatus = order.OrderStatus.Name;
+            OrderType = order.OrderType.Name;
+            RepairDescription = order.RepairDescription;
+            EmployeeId = order.Employee.Id;
+            OrderStatusId = order.OrderStatus.Id;
+            OrderStatuses = OtherService.GetOrderStatuses();
         }
 
         public Data.Models.Order ToEdit()
         {
-            _order.OrderStatus = new Data.Models.OrderStatus { Id = OrderStatusId };
-           // _order.Employee = new Data.Models.Employee { Id = EmployeeId };
+            _order.OrderStatus_Id = OrderStatusId;
+            _order.Employee_Id = EmployeeId;
             _order.RepairDescription = RepairDescription;
 
             return _order;

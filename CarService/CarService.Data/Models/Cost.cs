@@ -1,10 +1,7 @@
 namespace CarService.Data.Models
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("Cost")]
     public partial class Cost
@@ -20,8 +17,9 @@ namespace CarService.Data.Models
 
         public int Order_Id { get; set; }
 
-        [Column("Cost")]
-        public decimal Cost1 { get; set; }
+        public decimal Price { get; set; }
+
+        public string Description { get; set; }
 
         public virtual Order Order { get; set; }
     }

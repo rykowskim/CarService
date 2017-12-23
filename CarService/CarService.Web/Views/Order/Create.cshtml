@@ -1,7 +1,7 @@
 ﻿@model CarService.Web.ViewModels.Order.Create
 <div class="container">
     <div class="page-header">
-        <h3>Nowa naprawa</h3>
+        <h3>Nowe zlecenie</h3>
     </div>
     @using (Html.BeginForm("Create", "Order"))
     {
@@ -47,11 +47,11 @@
                     </div>
                 </div>
                 <div class="col-md-3 col-md-push-1">
-                    @Html.LabelFor(m => m.EmployeeId)
+                    @Html.LabelFor(m => m.EmployeeId) 
                     @Html.DropDownListFor(m => m.EmployeeId, Model.Empolyees, "--Wybierz--", new { @class = "form-control", @style = "border-radius: 0px" })
                 </div>
             </div>
-            <a href="#" class="btn btn-default pull-left" style="border-radius:0px;"><i class="fa fa-arrow-left fa-fw"></i>Powrót</a>
+            <a href="@Model.ReturnUrl" class="btn btn-default pull-left" style="border-radius:0px;"><i class="fa fa-arrow-left fa-fw"></i>Powrót</a>
             <input type="submit" class="btn btn-primary pull-right" style="border-radius:0px;" value="Zapisz" />
         </div>
     }

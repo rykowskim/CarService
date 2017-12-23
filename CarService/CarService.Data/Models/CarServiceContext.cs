@@ -44,7 +44,7 @@ namespace CarService.Data.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Cost>()
-                .Property(e => e.Cost1)
+                .Property(e => e.Price)
                 .HasPrecision(16, 2);
 
             modelBuilder.Entity<Customer>()

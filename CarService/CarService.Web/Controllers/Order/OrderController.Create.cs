@@ -8,7 +8,7 @@ namespace CarService.Web.Controllers.Order
     public partial class OrderController
     {
         [HttpGet, Route("Order/Create")]
-        public ActionResult Create()
+        public ActionResult Create(string returnUrl)
         {
             var session = Session["CarCreateSessionKey"] as List<KeyValuePair<string, int>>;
             var viewModel = _orderService.GetCreateViewModel(new Data.Models.Order());
@@ -24,6 +24,7 @@ namespace CarService.Web.Controllers.Order
                 viewModel.CarId = session.First(x => x.Key.Equals("Car")).Value;
                 Session["CarCreateSessionKey"] = null;
             }
+            viewModel.ReturnUrl = returnUrl;
             return View(viewModel);
         }
 

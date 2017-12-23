@@ -96,3 +96,7 @@ C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Web\bin\Microsoft.A
 C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Web\obj\Debug\CarService.Web.csprojResolveAssemblyReference.cache
 C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Web\obj\Debug\CarService.Web.dll
 C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Web\obj\Debug\CarService.Web.pdb
+C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Web\bin\PagedList.dll
+C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Web\bin\PagedList.Mvc.dll
+C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Web\bin\PagedList.xml
+C:\Users\rykos\Source\Repos\CarService\CarService\CarService.Web\bin\PagedList.Mvc.xml

@@ -40,7 +40,6 @@ namespace CarService.Web.Services.Order
         {
             dbContext.Entry(order.OrderStatus).State = System.Data.Entity.EntityState.Unchanged;
             dbContext.Entry(order.Employee).State = System.Data.Entity.EntityState.Unchanged;
-            //dbContext.Entry(employee).CurrentValues.SetValues(employee);
             dbContext.Entry(order).State = System.Data.Entity.EntityState.Modified;
             dbContext.SaveChanges();
         }

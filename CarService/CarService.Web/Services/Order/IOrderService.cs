@@ -9,5 +9,6 @@ namespace CarService.Web.Services.Order
         Create GetCreateViewModel(Data.Models.Order order);
         void Create(Data.Models.Order order);
         void Update(Data.Models.Order order);
+        IEnumerable<SearchResult> Search(OrderListFilters filters);
     }
 }
