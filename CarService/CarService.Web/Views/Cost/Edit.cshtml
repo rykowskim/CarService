@@ -1,11 +1,11 @@
 ﻿@model CarService.Web.ViewModels.Cost.EditCost
 <div class="container">
     <hr />
-    @using (Html.BeginForm("Create", "Cost", new { id = Model.Order.Id }, FormMethod.Post))
+    @using (Html.BeginForm("Edit", "Cost", new { id = Model.Id }, FormMethod.Post))
     {
         <div class="panel panel-primary" style="border-radius:0px;">
             <div class="panel-heading" style="border-radius:0px;">
-                <div class="panel-title text-center" style="font-size:20px;">Dodaj wycenę - Id zlecenia: @Model.Order.Id</div>
+                <div class="panel-title text-center" style="font-size:20px;">Edycja wyceny - Nr zlecenia: @Model.Order.Id</div>
             </div>
             <div class="panel-body">
                 @Html.Partial("Cost/Partial/_Edit", Model)

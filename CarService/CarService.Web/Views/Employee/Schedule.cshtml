@@ -1,0 +1,37 @@
+﻿@model IEnumerable<CarService.Web.ViewModels.Employee.Schedule>
+<div class="container">
+    @if (Model == null || !Model.Any())
+    {
+        <hr />
+        <div class="alert alert-danger text-center" style="margin-top:25px; border-radius: 0px; background-color:#cc1d1d; color:white">Nie przypisano do ciebie żadnych napraw.</div>
+    }
+    @if (Model != null && Model.Any())
+    {
+        <div class="page-header">
+            <h3>Twoja lista napraw</h3>
+        </div>
+        <table class="table table-striped table-bordered">
+            <thead style="background-color: #135bd3; color:white">
+                <tr>
+                    <th>Nr zlecenia</th>
+                    <th>Data utworzenia</th>
+                    <th>Klient</th>
+                    <th>Samochód</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td><a href="@Url.Action("Edit", "Order", new { id = item.OrderId, returnUrl = HttpContext.Current.Request.Url })">@item.OrderId</a></td>
+                        <td>@item.CreateDate</td>
+                        <td>@item.CustomerName</td>
+                        <td>@item.Car</td>
+                        <td>@item.OrderStatus</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

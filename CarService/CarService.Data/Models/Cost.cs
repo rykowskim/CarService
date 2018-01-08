@@ -6,7 +6,7 @@ namespace CarService.Data.Models
     [Table("Cost")]
     public partial class Cost
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
         public DateTime CreateDate { get; set; }

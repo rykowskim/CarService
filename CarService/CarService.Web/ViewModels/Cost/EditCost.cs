@@ -17,6 +17,8 @@ namespace CarService.Web.ViewModels.Cost
 
         public EditOrder Order { get; set; }
 
+        public string ReturnUrl { get; set; }
+
         private readonly Data.Models.Cost _cost;
 
         public EditCost(Data.Models.Cost cost)
@@ -35,12 +37,13 @@ namespace CarService.Web.ViewModels.Cost
             if (_cost.Id == 0)
             {
                 _cost.CreateDate = DateTime.Now;
+                _cost.IsActive = true;
             }
 
             _cost.ModifyDate = DateTime.Now;
             _cost.Price = Price.Value;
             _cost.Description = Description;
-            _cost.Order_Id = Order.Id;
+            _cost.Order = new Data.Models.Order { Id = Order.Id };
 
             return _cost;
         }

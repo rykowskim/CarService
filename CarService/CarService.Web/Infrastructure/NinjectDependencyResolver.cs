@@ -1,6 +1,7 @@
 ﻿using CarService.Web.Services;
 using CarService.Web.Services.Address;
 using CarService.Web.Services.Car;
+using CarService.Web.Services.Cost;
 using CarService.Web.Services.Customer;
 using CarService.Web.Services.Employee;
 using CarService.Web.Services.Order;
@@ -43,7 +44,7 @@ namespace CarService.Web.Infrastructure
             _kernel.Bind<ICustomerService>().To<CustomerService>();
             _kernel.Bind<IOrderService>().To<OrderService>();
             _kernel.Bind<ICarsService>().To<CarsService>();
-
+            _kernel.Bind<ICostService>().To<CostService>();
         }
     }
 }

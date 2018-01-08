@@ -43,6 +43,10 @@ namespace CarService.Data.Models
                 .HasForeignKey(e => e.Car_Id)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<Car>()
+                .Property(e => e.Engine)
+                .HasPrecision(12, 3);
+
             modelBuilder.Entity<Cost>()
                 .Property(e => e.Price)
                 .HasPrecision(16, 2);

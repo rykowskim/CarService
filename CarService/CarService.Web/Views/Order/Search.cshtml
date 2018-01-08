@@ -63,7 +63,7 @@
                     <td>@item.OrderType</td>
                     <td>@item.OrderStatus</td>
                     <td class="text-center" style="width: 50px;">
-                        <a href="@Url.Action("Edit", "Order", new { id = item.OrderId, returnUrl = HttpContext.Current.Request.Url })" class="btn btn-sm btn-default"><span class="fa fa-fw fa-edit"></span></a>
+                        <a href="@Url.Action("Edit", "Order", new { id = item.OrderId, returnUrl = HttpContext.Current.Request.Url })" class="btn btn-sm btn-default" style="border-radius: 0px;"><span class="fa fa-fw fa-edit"></span></a>
                     </td>
                 </tr>
             }

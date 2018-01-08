@@ -9,6 +9,8 @@ namespace CarService.Web.ViewModels.Employee
 {
     public class EmployeeEdit
     {
+        public int Id { get; set; }
+
         [DisplayName("Imię")]
         [Required(ErrorMessage ="Pole Imię jest wymagane")]
         public string Name { get; set; }
@@ -40,7 +42,8 @@ namespace CarService.Web.ViewModels.Employee
         public EmployeeEdit(Data.Models.Employee employee)
         {
             _employee = employee;
-            
+
+            Id = employee.Id;
             Name = employee.Name;
             Surname = employee.Surname;
             Pesel = employee.Pesel;

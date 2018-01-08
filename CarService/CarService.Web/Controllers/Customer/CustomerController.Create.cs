@@ -7,14 +7,17 @@ namespace CarService.Web.Controllers.Customer
     public partial class CustomerController
     {
         [HttpGet, Route("Customer/Create")]
-        public ActionResult Create()
+        public ActionResult Create(string returnUrl)
         {
-            var viewModel = new CustomerEdit(new Data.Models.Customer());
+            var viewModel = new CustomerEdit(new Data.Models.Customer())
+            {
+                ReturnUrl = returnUrl
+            };
             return View(viewModel);
         }
 
         [HttpPost, Route("Customer/Create"), ActionName("Create")]
-        public ActionResult CreatePost()
+        public ActionResult CreatePost(string returnUrl)
         {
             var viewModel = new CustomerEdit(new Data.Models.Customer());
 
@@ -31,9 +34,11 @@ namespace CarService.Web.Controllers.Customer
             catch(Exception ex)
             {
                 return View(viewModel);
+                throw ex;
             }
 
-            return RedirectToAction("Create", "Order");
+            //return RedirectToAction("Create", "Order");
+            return Redirect(returnUrl);
         }
     }
 }

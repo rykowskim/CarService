@@ -1,0 +1,53 @@
+﻿@model CarService.Web.ViewModels.Customer.CustomerEdit
+<div class="container">
+    <div class="page-header">
+        <h3>Nr klienta: @Model.Id - @string.Format("{0} {1}", Model.Name, Model.Surname)</h3>
+    </div>
+    @using (Html.BeginForm("Edit", "Customer", new { returnUrl = Model.ReturnUrl }))
+    {
+        @Html.ValidationSummary()
+        <div class="panel panel-body panel-default" style="border-radius: 0px;">
+            <div class="row">
+                <div class="col-md-5 col-md-push-1">
+                    @Html.Partial("Customer/Partial/_Edit", Model)
+                </div>
+                <div class="col-md-7">
+                    @Html.EditorFor(m => m.AddressEdit, "Shared/EditorTemplates/AddressEdit")
+                </div>
+            </div>
+            <a href="@Model.ReturnUrl" class="btn btn-danger pull-left" style="border-radius: 0px;">Anuluj</a>
+            <button type="submit" class="btn btn-primary pull-right" style="border-radius:0px;">Zapisz</button>
+        </div>
+    }
+    <div class="panel panel-default" style="border-radius: 0px;">
+        <div class="panel-heading clearfix" style="padding: 5px 5px 5px 5px">
+            <h3 class="panel-title pull-left" style="padding:7.5px; font-size:18px;">Lista samochodów</h3>@*TODO*@
+        </div>
+        <div class="panel-body">
+            <div class="form-group row">
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-8">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('#@Html.IdFor(m => m.Name)').prop('disabled', true);
+    $('#@Html.IdFor(m => m.Surname)').prop('disabled', true);
+    $('#@Html.IdFor(m => m.Phone)').prop('disabled', true);
+    $('#@Html.IdFor(m => m.Email)').prop('disabled', true);
+    $('#@Html.IdFor(m => m.AddressEdit.City)').prop('disabled', true);
+    $('#@Html.IdFor(m => m.AddressEdit.FlatNumber)').prop('disabled', true);
+    $('#@Html.IdFor(m => m.AddressEdit.PostalCode)').prop('disabled', true);
+    $('#@Html.IdFor(m => m.AddressEdit.Street)').prop('disabled', true);
+</script>

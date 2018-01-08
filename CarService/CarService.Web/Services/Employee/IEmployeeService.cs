@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using CarService.Web.ViewModels.Employee;
+using System.Collections.Generic;
 
 namespace CarService.Web.Services.Employee
 {
@@ -8,5 +9,6 @@ namespace CarService.Web.Services.Employee
 
         void Create(Data.Models.Employee employee);
         void Update(Data.Models.Employee employee);
+        IEnumerable<Schedule> GetSchedule(int empoloyeeId);
     }
 }

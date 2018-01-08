@@ -31,6 +31,8 @@
                 }
             );
         });
+
+
     </script>
 
 </head>
@@ -49,9 +51,10 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <form class="navbar-form navbar-left" role="search">
+                    <form class="navbar-form navbar-left" action="/Order/Edit" method="get" role="search">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Id naprawy">
+                            <input type="text" class="form-control" name="id" placeholder="Id naprawy">
+                            <input type="hidden" name="returnUrl" value="@HttpContext.Current.Request.Url" />
                             <span class="input-group-btn">
                                 <button type="submit" class="btn btn-default">
                                     <span class="fa fa-search fa-fw"></span>
@@ -77,6 +80,24 @@
                                 <li>
                                     <a href="@Url.Action("Search", "Order")">
                                         <span class="fa fa-list fa-fw"></span> Zlecenia
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                Klienci<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="@Url.Action("Create", "Customer", new { returnUrl = Url.Action("List", "Customer") })">
+                                        <span class="fa fa-male fa-fw"></span> Nowy klient
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="@Url.Action("List", "Customer")">@*todo*@
+                                        <span class="fa fa-list fa-fw"></span> Lista klientów
                                     </a>
                                 </li>
                             </ul>

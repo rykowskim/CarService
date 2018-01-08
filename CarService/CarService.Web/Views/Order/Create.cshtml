@@ -16,7 +16,7 @@
                     <div class="input-group">
                         @Html.DropDownListFor(m => m.CustomerId, Model.Customers, "--Wybierz--", new { @class = "form-control", @style = "border-radius: 0px" })
                         <span class="input-group-btn">
-                            <a href="@Url.Action("Create", "Customer")" class="btn btn-primary" style="border-radius: 0px;">
+                            <a href="@Url.Action("Create", "Customer", new { returnUrl = HttpContext.Current.Request.Url })" class="btn btn-primary" style="border-radius: 0px;">
                                 <span class="fa fa-plus fa-fw"></span>
                                 Nowy
                             </a>

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using CarService.Web.ViewModels.Customer;
+using System.Collections.Generic;
 
 namespace CarService.Web.Services.Customer
 {
@@ -6,5 +7,6 @@ namespace CarService.Web.Services.Customer
     {
         IEnumerable<Data.Models.Customer> Customers { get; }
         void Create(Data.Models.Customer customer);
+        IEnumerable<ResultItem> Search(CustomerListFilters filter);
     }
 }

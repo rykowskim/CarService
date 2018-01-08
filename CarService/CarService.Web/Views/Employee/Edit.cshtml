@@ -1,7 +1,12 @@
 ﻿@model CarService.Web.ViewModels.Employee.EmployeeEdit
 <div class="container">
     <div class="page-header"> @*style="color: #135bd3; >*@
+        
+        <div class="pull-right">
+            <a href="@Url.Action("Schedule", "Employee", new { id = Model.Id})" class="btn btn-primary" style="font-size:17px; padding: 6px 6px 6px 6px;">Moje naprawy</a>
+        </div>
         <h3>Profil pracownika</h3>
+        
     </div>
     @using (Html.BeginForm("Edit", "Employee"))
     {

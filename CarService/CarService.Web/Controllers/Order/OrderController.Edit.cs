@@ -1,5 +1,4 @@
-﻿using CarService.Web.Services.Other;
-using CarService.Web.ViewModels.Order;
+﻿using CarService.Web.ViewModels.Order;
 using System;
 using System.Linq;
 using System.Web.Mvc;
@@ -25,7 +24,8 @@ namespace CarService.Web.Controllers.Order
                     Value = n.Id.ToString(),
                     Text = string.Format("{0} {1}", n.Name, n.Surname)
                 }),
-                ReturnUrl = returnUrl
+                ReturnUrl = returnUrl,
+                Cost = _costService.Costs.FirstOrDefault(x => x.Order.Id == order.Id)
             };
             return View(viewModel);
         }
@@ -60,7 +60,7 @@ namespace CarService.Web.Controllers.Order
                 _orderService.Update(viewModel.ToEdit());
 
                 if (viewModel.OrderStatusId == 4) //do odbioru
-                    return RedirectToAction("Create", "Cost", new { id = order.Id });
+                    return RedirectToAction("Create", "Cost", new { id = order.Id, returnUrl = HttpContext.Request.Url });
 
                 return Redirect(viewModel.ReturnUrl);
             }

@@ -7,6 +7,8 @@ namespace CarService.Web.ViewModels.Customer
 {
     public class CustomerEdit
     {
+        public int Id { get; set; }
+
         [Required(ErrorMessage = "Imię jest wymagane")]
         [DisplayName("Imię")]
         public string Name { get; set; }
@@ -25,16 +27,21 @@ namespace CarService.Web.ViewModels.Customer
 
         public AddressEdit AddressEdit { get; set; }
 
+        public string ReturnUrl { get; set; }
+
         private readonly Data.Models.Customer _customer;
 
         public CustomerEdit(Data.Models.Customer customer)
         {
             _customer = customer ?? new Data.Models.Customer();
 
+            if (customer != null && customer.Id != 0)
+                Id = customer.Id;
+
             Name = customer.Name;
             Surname = customer.Surname;
-            Phone = Phone;
-            Email = Email;
+            Phone = customer.Phone;
+            Email = customer.Email;
             AddressEdit = new AddressEdit(customer.Address);
         }
 
@@ -43,10 +50,10 @@ namespace CarService.Web.ViewModels.Customer
             if (_customer.Id == 0)
             {
                 _customer.CreateDate = DateTime.Now;
-                _customer.ModifyDate = DateTime.Now;
                 _customer.IsActive = true;
             }
 
+            _customer.ModifyDate = DateTime.Now;
             _customer.Name = Name;
             _customer.Surname = Surname;
             _customer.Phone = Phone;

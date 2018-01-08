@@ -29,6 +29,8 @@ namespace CarService.Web.ViewModels.Order
 
         public string ReturnUrl { get; set; }
 
+        public Data.Models.Cost Cost { get; set; }
+
         private readonly Data.Models.Order _order;
 
         public EditOrder(Data.Models.Order order)

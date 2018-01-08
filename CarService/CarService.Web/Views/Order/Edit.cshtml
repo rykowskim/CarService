@@ -3,62 +3,106 @@
 <div class="container">
     <div class="page-header">
         <h3>
-            Id zlecenia: <bold>@Model.Id</bold>
+            Nr zlecenia: <bold>@Model.Id</bold>
         </h3>
     </div>
-    <div class="panel panel-default panel-body" style="border-radius: 0px;">
-        <div class="row">
-            <div class="col-md-8 col-md-push-1">
-                <div class="form-group row">
-                    <span class="col-md-2">Klient:</span>
-                    <div class="col-md-6">
-                        <p><b>@Model.Customer</b></p>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <span class="col-md-2">Samochód:</span>
-                    <div class="col-md-6">
-                        <p><b>@Model.Car</b></p>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <span class="col-md-2">Typ:</span>
-                    <div class="col-md-6">
-                        <p><b>@Model.OrderType</b></p>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <span class="col-md-2">Status:</span>
-                    <div class="col-md-6">
-                        <p><b>@Model.OrderStatus</b></p>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <span class="col-md-2">Opis:</span>
-                    <div class="col-md-5">
-                        @Html.TextAreaFor(m => m.RepairDescription, new { @class = "form-control", @rows = "4", @style = "border-radius:0px;", @readonly = true })
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <span class="col-md-2">Przypisany do:</span>
-                    <div class="col-md-6">
-                        <p><b>@Model.Employee</b></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="panel panel-default panel-body" style="border-radius: 0px;">
                 <div class="row">
-                    <button type="button" class="btn btn-primary pull-right" id="BtnEdit" style="border-radius: 0px; width:100px;">Edycja</button>
-                </div>
-                <div class="row">
-                    <a href="@Model.ReturnUrl" class="btn btn-default pull-right" style="border-radius: 0px; width:100px;">Powrót</a>
+                    <div class="col-md-8 col-md-push-1">
+                        <div class="form-group row">
+                            <span class="col-md-3">Klient:</span>
+                            <div class="col-md-6">
+                                <p><b>@Model.Customer</b></p>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <span class="col-md-3">Samochód:</span>
+                            <div class="col-md-6">
+                                <p><b>@Model.Car</b></p>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <span class="col-md-3">Typ:</span>
+                            <div class="col-md-6">
+                                <p><b>@Model.OrderType</b></p>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <span class="col-md-3">Status:</span>
+                            <div class="col-md-6">
+                                <p><b>@Model.OrderStatus</b></p>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <span class="col-md-3">Opis:</span>
+                            <div class="col-md-8">
+                                @Html.TextAreaFor(m => m.RepairDescription, new { @class = "form-control", @rows = "4", @style = "border-radius:0px;", @readonly = true })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <span class="col-md-3">Przypisany do:</span>
+                            <div class="col-md-6">
+                                <p><b>@Model.Employee</b></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="row">
+                            <button type="button" class="btn btn-primary pull-right" id="BtnEdit" style="border-radius: 0px; width:100px;">Edycja</button>
+                        </div>
+                        <div class="row">
+                            <a href="@Model.ReturnUrl" class="btn btn-default pull-right" style="border-radius: 0px; width:100px;">Powrót</a>
+                        </div>
+                        @if (Model.OrderStatusId == 4 && Model.Cost == null)
+                        {
+                            <div class="row">
+                                <a href="@Url.Action("Create", "Cost", new { id = Model.Id, returnUrl = HttpContext.Current.Request.Url })" class="btn btn-primary pull-right" style="border-radius: 0px; width:100px;">Wyceń</a>
+                            </div>
+                        }
+                    </div>
                 </div>
             </div>
         </div>
+        @if (Model.Cost != null)
+        {
+            <div class="col-md-4">
+                <div class="panel panel-default" style="border-radius: 0px;">
+                    <div class="panel-heading clearfix" style="padding:6px 6px 6px 6px;">
+                        <h4 class="panel-title pull-left" style="padding-top: 7.5px;">Wycena</h4>
+                        <div class="pull-right">
+                            <a href="@Url.Action("Edit", "Cost", new { Id = Model.Cost.Id, returnUrl = HttpContext.Current.Request.Url })" class="btn btn-primary" style="border-radius: 0px; padding:4px 7px 2px 4px;">Edytuj</a>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                @Html.Label("Wymiana:", new { @class = "control-label", @style = "line-height: 32px; padding: 0" })
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextAreaFor(m => m.Cost.Description, new { @class = "form-control", @rows = "4", @style = "border-radius:0px;", @readonly = true })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-3">
+                                @Html.Label("Cena:", new { @class = "control-label", @style = "line-height: 32px; padding: 0" })
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    @Html.TextBoxFor(m => m.Cost.Price, new { @class = "form-control", @style = "border-radius:0px;", @readonly = true })
+                                    <span class="input-group-addon" style="border-radius:0px;">zł</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
     </div>
     @using (Html.BeginForm("Edit", "Order", new { returnUrl = Model.ReturnUrl}))
     {
-        <div class="panel panel-default panel-body panel-edit hidden" style="border-radius: 0px; ">
+        <div class="panel panel-default panel-body panel-edit hidden" style="border-radius: 0px;">
             <div class="col-md-push-1">
                 <div class="row form-group">
                     <div class="col-md-3">

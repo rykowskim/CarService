@@ -34,7 +34,7 @@ namespace CarService.Web.ViewModels.Order
             {
                 new SelectListItem { Value = "OrderId ASC", Text = "Id rosnąco" },
                 new SelectListItem { Value = "OrderId DESC", Text = "Id malejąco" },
-                new SelectListItem { Value = "Customer ASC", Text = "Klien rosnąco" },
+                new SelectListItem { Value = "Customer ASC", Text = "Klient rosnąco" },
                 new SelectListItem { Value = "Customer DESC", Text = "Klient malejąco" },
                 new SelectListItem { Value = "Car ASC", Text = "Samochód rosnąco" },
                 new SelectListItem { Value = "Car DESC", Text = "Samochód malejąco" }
