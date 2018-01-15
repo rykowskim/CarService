@@ -33,7 +33,9 @@ namespace CarService.Web.ViewModels.Car
         [DisplayName("Właściciel")]
         [Required(ErrorMessage = "Właściciel jest wymagany")]
         public int CustomerId { get; set; }
-        public IEnumerable<SelectListItem> Customers { get; set; } 
+        public IEnumerable<SelectListItem> Customers { get; set; }
+
+        public string ReturnUrl { get; set; }
 
         public Data.Models.Car ToCar()
         {

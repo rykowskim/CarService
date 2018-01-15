@@ -245,12 +245,15 @@
     <Compile Include="Services\User\UserService.cs" />
     <Compile Include="Services\User\UserService.IsExists.cs" />
     <Compile Include="ViewModels\Car\CarCreate.cs" />
+    <Compile Include="ViewModels\Car\CarItem.cs" />
     <Compile Include="ViewModels\Cost\EditCost.cs" />
     <Compile Include="ViewModels\Customer\CustomerEdit.cs" />
     <Compile Include="ViewModels\Customer\CustomerListFilters.cs" />
+    <Compile Include="ViewModels\Customer\Edit.cs" />
     <Compile Include="ViewModels\Customer\ResultItem.cs" />
     <Compile Include="ViewModels\Employee\EmployeeEdit.cs" />
     <Compile Include="ViewModels\Employee\Schedule.cs" />
+    <Compile Include="ViewModels\Home\OrderItem.cs" />
     <Compile Include="ViewModels\Home\StartPageViewModel.cs" />
     <Compile Include="ViewModels\Order\Create.cs" />
     <Compile Include="ViewModels\Order\EditOrder.cs" />

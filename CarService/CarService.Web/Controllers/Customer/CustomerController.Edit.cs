@@ -1,8 +1,7 @@
-﻿using CarService.Web.ViewModels.Customer;
+﻿using CarService.Web.ViewModels.Car;
+using CarService.Web.ViewModels.Customer;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace CarService.Web.Controllers.Customer
@@ -18,9 +17,15 @@ namespace CarService.Web.Controllers.Customer
                 return RedirectToAction("Index", "Home");
             }
 
-            var viewModel = new CustomerEdit(customer)
+            //var viewModel = new CustomerEdit(customer)
+            //{
+            //    ReturnUrl = returnUrl
+            //};
+
+            var viewModel = new Edit()
             {
-                ReturnUrl = returnUrl
+                Customer = new CustomerEdit(customer),
+                Cars = customer.Car.Select(n => new CarItem { Brand = n.Mark, Model = n.Model, Engine = n.Engine, ProductYear = n.ProductYear, RegisterNumber = n.RegisterNumber })
             };
             return View(viewModel);
         }

@@ -1,30 +1,59 @@
-﻿@model CarService.Web.ViewModels.Customer.CustomerEdit
+﻿@model CarService.Web.ViewModels.Customer.Edit
 <div class="container">
     <div class="page-header">
-        <h3>Nr klienta: @Model.Id - @string.Format("{0} {1}", Model.Name, Model.Surname)</h3>
+        <h3>Nr klienta: @Model.Customer.Id - @string.Format("{0} {1}", Model.Customer.Name, Model.Customer.Surname)</h3>
     </div>
-    @using (Html.BeginForm("Edit", "Customer", new { returnUrl = Model.ReturnUrl }))
+    @using (Html.BeginForm("Edit", "Customer", new { returnUrl = Model.Customer.ReturnUrl }))
     {
         @Html.ValidationSummary()
         <div class="panel panel-body panel-default" style="border-radius: 0px;">
             <div class="row">
                 <div class="col-md-5 col-md-push-1">
-                    @Html.Partial("Customer/Partial/_Edit", Model)
+                    @Html.Partial("Customer/Partial/_Edit", Model.Customer)
                 </div>
                 <div class="col-md-7">
-                    @Html.EditorFor(m => m.AddressEdit, "Shared/EditorTemplates/AddressEdit")
+                    @Html.EditorFor(m => m.Customer.AddressEdit, "Shared/EditorTemplates/AddressEdit")
                 </div>
             </div>
-            <a href="@Model.ReturnUrl" class="btn btn-danger pull-left" style="border-radius: 0px;">Anuluj</a>
+            <a href="@Model.Customer.ReturnUrl" class="btn btn-danger pull-left" style="border-radius: 0px;">Anuluj</a>
             <button type="submit" class="btn btn-primary pull-right" style="border-radius:0px;">Zapisz</button>
         </div>
     }
     <div class="panel panel-default" style="border-radius: 0px;">
-        <div class="panel-heading clearfix" style="padding: 5px 5px 5px 5px">
-            <h3 class="panel-title pull-left" style="padding:7.5px; font-size:18px;">Lista samochodów</h3>@*TODO*@
+        <div class="panel-heading clearfix" style="padding: 6px 6px 6px 6px;">
+            <h4 class="panel-title pull-left" style="padding-top:7.5px; ">Lista samochodów</h4>
+            <div class="pull-right">
+                <a href="@Url.Action("Create", "Car", new { id = Model.Customer.Id, returnUrl = HttpContext.Current.Request.Url})" class="btn btn-primary" style="border-radius: 0px; padding:4px 7px 2px 4px;">Nowy</a>
+            </div>
         </div>
-        <div class="panel-body">
-            <div class="form-group row">
+        <div class="panel-body" style="padding: 0;">
+            <table class="table table-striped table-bordered">
+                <thead  color:white">
+                    <tr>
+                        <th>Marka</th>
+                        <th>Model</th>
+                        <th>Silnik</th>
+                        <th>Rok produkcji</th>
+                        <th>Rejestracja</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Cars)
+                    {
+                        <tr>
+                            <td>@item.Brand</td>
+                            <td>@item.Model</td>
+                            <td>@item.Engine cm<sup>3</sup></td>
+                            <td>@item.ProductYear</td>
+                            <td>@item.RegisterNumber</td>
+                            @*<td class="text-center" style="width:50px;">
+                                <a href="@Url.Action("Edit", "Customer", new { id = item.CustomerId, returnUrl = HttpContext.Current.Request.Url })" class="btn btn-sm btn-default" style="border-radius: 0px;"><span class="fa fa-fw fa-address-book"</a>
+                            </td>*@
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            @*<div class="form-group row">
                 <div class="col-md-3">
                 </div>
                 <div class="col-md-8">
@@ -37,17 +66,17 @@
                     <div class="input-group">
                     </div>
                 </div>
-            </div>
+            </div>*@
         </div>
     </div>
 </div>
 <script>
-    $('#@Html.IdFor(m => m.Name)').prop('disabled', true);
-    $('#@Html.IdFor(m => m.Surname)').prop('disabled', true);
-    $('#@Html.IdFor(m => m.Phone)').prop('disabled', true);
-    $('#@Html.IdFor(m => m.Email)').prop('disabled', true);
-    $('#@Html.IdFor(m => m.AddressEdit.City)').prop('disabled', true);
-    $('#@Html.IdFor(m => m.AddressEdit.FlatNumber)').prop('disabled', true);
-    $('#@Html.IdFor(m => m.AddressEdit.PostalCode)').prop('disabled', true);
-    $('#@Html.IdFor(m => m.AddressEdit.Street)').prop('disabled', true);
+    $('#@Html.IdFor(m => m.Customer.Name)').prop('disabled', true);
+    $('#@Html.IdFor(m => m.Customer.Surname)').prop('disabled', true);
+    $('#@Html.IdFor(m => m.Customer.Phone)').prop('disabled', true);
+    $('#@Html.IdFor(m => m.Customer.Email)').prop('disabled', true);
+    $('#@Html.IdFor(m => m.Customer.AddressEdit.City)').prop('disabled', true);
+    $('#@Html.IdFor(m => m.Customer.AddressEdit.FlatNumber)').prop('disabled', true);
+    $('#@Html.IdFor(m => m.Customer.AddressEdit.PostalCode)').prop('disabled', true);
+    $('#@Html.IdFor(m => m.Customer.AddressEdit.Street)').prop('disabled', true);
 </script>

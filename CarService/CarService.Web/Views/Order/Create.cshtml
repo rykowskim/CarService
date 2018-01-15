@@ -86,8 +86,9 @@
     $(function () {
         $('#BtnNewCar').on('click', function () {
             var id = $('#@Html.IdFor(m => m.CustomerId) :selected').val();
-            var url = '@Url.Action("Create", "Car", new { id = "--id--" })'
-            window.location.href = url.replace("--id--", id)
+            var url = '@Url.Action("Create", "Car", new { id = "--id--", returnUrl = "--url--" })';
+            var returnUrl = '@HttpContext.Current.Request.Url'
+            window.location.href = url.replace("--id--", id).replace("--url--", returnUrl);
         });
     });
 </script>

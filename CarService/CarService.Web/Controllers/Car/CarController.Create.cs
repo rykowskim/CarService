@@ -9,7 +9,7 @@ namespace CarService.Web.Controllers.Car
     public partial class CarController
     {
         [HttpGet, Route("Car/Create/{id?}")]
-        public ActionResult Create([Bind(Prefix = "id")]int? customerId)
+        public ActionResult Create([Bind(Prefix = "id")]int? customerId, string returnUrl)
         {
             var viewModel = new CarCreate
             {
@@ -17,7 +17,8 @@ namespace CarService.Web.Controllers.Car
                 {
                     Value = n.Id.ToString(),
                     Text = string.Format("{0} {1}", n.Name, n.Surname)
-                })
+                }),
+                ReturnUrl = returnUrl
             };
 
             if (customerId.HasValue)
@@ -27,7 +28,7 @@ namespace CarService.Web.Controllers.Car
         }
 
         [HttpPost, Route("Car/Create/{id?}"), ActionName("Create")]
-        public ActionResult CreatePost([Bind(Prefix = "id")]int? customerId)
+        public ActionResult CreatePost([Bind(Prefix = "id")]int? customerId, string returnUrl)
         {
             var viewModel = new CarCreate
             {
@@ -35,7 +36,8 @@ namespace CarService.Web.Controllers.Car
                 {
                     Value = n.Id.ToString(),
                     Text = string.Format("{0} {1}", n.Name, n.Surname)
-                })
+                }),
+                ReturnUrl = returnUrl
             };
 
             if (customerId.HasValue)
@@ -66,7 +68,7 @@ namespace CarService.Web.Controllers.Car
                 throw ex;
             }
 
-            return RedirectToAction("Create", "Order");
+            return Redirect(returnUrl);
 
 
         }

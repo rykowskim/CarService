@@ -2,7 +2,7 @@
 
 <div class="container">
     <hr />
-    @using (Html.BeginForm("Create", "Car"))
+    @using (Html.BeginForm("Create", "Car", new { returnUrl = Model.ReturnUrl}))
     {
         @Html.ValidationSummary()
         <div class="panel panel-primary" style="border-radius: 0px;">
