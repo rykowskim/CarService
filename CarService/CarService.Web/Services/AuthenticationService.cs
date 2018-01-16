@@ -19,7 +19,8 @@ namespace CarService.Web.Services
                     new Claim(ClaimTypes.Name, user.Name),
                     new Claim(ClaimTypes.Surname, user.Surname),
                     new Claim(ClaimTypes.Email, user.Email),
-                    new Claim("Id", user.Id.ToString())
+                    new Claim("Id", user.Id.ToString()),
+                    new Claim(ClaimTypes.Role, user.Role.Name)
                 }, "ApplicationCookie");
             
             var ctx = HttpContext.Current.Request.GetOwinContext();

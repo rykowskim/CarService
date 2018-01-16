@@ -35,6 +35,10 @@ namespace CarService.Web.ViewModels.Employee
         [DisplayName("Pensja")]
         public decimal? Salary { get; set; }
 
+        public bool EmployeeIsAdministrator{ get; set; }
+
+        public bool IsAdmin { get; set; }
+
         public AddressEdit AddressEdit { get; set; }
 
         private readonly Data.Models.Employee _employee;
@@ -50,6 +54,7 @@ namespace CarService.Web.ViewModels.Employee
             Phone = employee.Phone;
             AddressEdit = new AddressEdit(employee.Address);
             Salary = employee.Salary;
+            EmployeeIsAdministrator = employee.User.Role.Id == (int)Data.Enums.Role.Admin;
             if (employee.Position != null)
                 PositionId = employee.Position.Id;
         }
@@ -61,7 +66,11 @@ namespace CarService.Web.ViewModels.Employee
             _employee.Surname = Surname;
             _employee.Pesel = Pesel;
             _employee.Phone = Phone;
-            _employee.Salary = Salary ?? 0;
+            if (IsAdmin)
+            {
+                _employee.Salary = Salary ?? 0;
+                _employee.User.Role_Id = EmployeeIsAdministrator ? (int)Data.Enums.Role.Admin : (int)Data.Enums.Role.Employee;
+            }
             if (_employee.Position == null)
                 _employee.Position = new Data.Models.Position { Id = PositionId };
             _employee.Address = _employee.Address == null ? AddressEdit.ToNewAddress() : AddressEdit.ToAddress();

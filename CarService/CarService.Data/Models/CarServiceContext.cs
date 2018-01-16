@@ -107,6 +107,12 @@ namespace CarService.Data.Models
                 .HasForeignKey(e => e.Role_Id)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<Role>()
+                .HasMany(e => e.User)
+                .WithRequired(e => e.Role)
+                .HasForeignKey(e => e.Role_Id)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<User>()
                 .HasMany(e => e.Employee)
                 .WithRequired(e => e.User)

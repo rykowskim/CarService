@@ -1,0 +1,83 @@
+﻿@model CarService.Web.ViewModels.Employee.EmployeeEdit
+<div class="container">
+    <div class="page-header">
+        @*<div class="pull-right">
+            <a href="@Url.Action("Schedule", "Employee", new { id = Model.Id})" class="btn btn-primary" style="font-size:17px; padding: 6px 6px 6px 6px; border-radius: 0px;">Moje naprawy</a>
+        </div>*@
+        <h3>Profil: <b>@Model.Name @Model.Surname</b></h3>
+    </div>
+    @using (Html.BeginForm("View", "Employee"))
+    {
+        @Html.ValidationSummary()
+        @Html.HiddenFor(m => m.EmployeeIsAdministrator)
+        <div class="panel panel-body panel-default" style="border-radius: 0px;">
+            <div class="row">
+                <div class="col-md-5 col-md-push-1">
+                    @Html.Partial("Employee/Partial/_Edit", Model)
+                </div>
+                <div class="col-md-7">
+                    @Html.EditorFor(m => m.AddressEdit, "Shared/EditorTemplates/AddressEdit")
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5 col-md-offset-1">
+                    <div class="form-group row" style="border-radius:0px;">
+                        <input type="checkbox" name="fancy-checkbox-primary" id="fancy-checkbox-primary" autocomplete="off" @(Model.EmployeeIsAdministrator ? "checked" : "") />
+                        <div class="btn-group">
+                            <label for="fancy-checkbox-primary" class="btn btn-primary" style="border-radius:0px; height:30px;">
+                                <span class="glyphicon glyphicon-ok"></span>
+                                <span></span>
+                            </label>
+                            <label for="fancy-checkbox-primary" class="btn btn-default active" style="border-radius:0px; height:30px; width:150px;">
+                                Administrator
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-md-offset-3">
+                    <button type="submit" class="btn btn-primary pull-right" style="border-radius:0px;">Zapisz</button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<script>
+    $('#fancy-checkbox-primary').on('change', function () {
+        if (this.checked)
+        {
+            $('#@Html.IdFor(m => m.EmployeeIsAdministrator)').val(true);
+            console.log($('#@Html.IdFor(m => m.EmployeeIsAdministrator)').val())
+        }
+        else
+        {
+            $('#@Html.IdFor(m => m.EmployeeIsAdministrator)').val(false);
+            console.log($('#@Html.IdFor(m => m.EmployeeIsAdministrator)').val())
+        }
+    });
+</script>
+<style>
+    .form-group input[type="checkbox"] {
+        display: none;
+    }
+
+        .form-group input[type="checkbox"] + .btn-group > label span {
+            width: 15px;
+            height: 30px;
+        }
+
+            .form-group input[type="checkbox"] + .btn-group > label span:first-child {
+                display: none;
+            }
+
+            .form-group input[type="checkbox"] + .btn-group > label span:last-child {
+                display: inline-block;
+            }
+
+        .form-group input[type="checkbox"]:checked + .btn-group > label span:first-child {
+            display: inline-block;
+        }
+
+        .form-group input[type="checkbox"]:checked + .btn-group > label span:last-child {
+            display: none;
+        }
+</style>

@@ -33,5 +33,7 @@ namespace CarService.Data.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserXRole> UserXRole { get; set; }
+
+        public virtual ICollection<User> User { get; set; }
     }
 }

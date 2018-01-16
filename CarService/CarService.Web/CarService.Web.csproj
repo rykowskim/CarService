@@ -206,6 +206,8 @@
     <Compile Include="Controllers\Employee\EmployeeController.cs" />
     <Compile Include="Controllers\Employee\EmployeeController.Edit.cs" />
     <Compile Include="Controllers\Employee\EmployeeController.Schedule.cs" />
+    <Compile Include="Controllers\Employee\EmployeeController.Search.cs" />
+    <Compile Include="Controllers\Employee\EmployeeController.View.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Auth\AuthController.cs" />
     <Compile Include="Controllers\Order\OrderController.Create.cs" />
@@ -252,6 +254,8 @@
     <Compile Include="ViewModels\Customer\Edit.cs" />
     <Compile Include="ViewModels\Customer\ResultItem.cs" />
     <Compile Include="ViewModels\Employee\EmployeeEdit.cs" />
+    <Compile Include="ViewModels\Employee\ResultItem.cs" />
+    <Compile Include="ViewModels\Employee\EmployeeSearchItem.cs" />
     <Compile Include="ViewModels\Employee\Schedule.cs" />
     <Compile Include="ViewModels\Home\OrderItem.cs" />
     <Compile Include="ViewModels\Home\StartPageViewModel.cs" />
@@ -426,11 +430,13 @@
     <Content Include="Views\Employee\Schedule.cshtml" />
     <Content Include="Views\Customer\List.cshtml" />
     <Content Include="Views\Customer\Edit.cshtml" />
+    <Content Include="Views\Employee\Search.cshtml" />
+    <Content Include="Views\Employee\Employee\Partial\_Edit.cshtml" />
+    <Content Include="Views\Employee\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Properties\PublishProfiles\" />
-    <Folder Include="Views\Employee\Partial\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

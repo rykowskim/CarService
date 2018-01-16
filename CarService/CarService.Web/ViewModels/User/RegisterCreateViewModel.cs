@@ -74,7 +74,8 @@ namespace CarService.Web.ViewModels.User
                 Password = Encrypt.EncryptPassword(Password),
                 Name = Name,
                 Surname = Surname,
-                DateofBirth = DateOfBirth
+                DateofBirth = DateOfBirth,
+                Role_Id = (int)Data.Enums.Role.Employee
             };
         }
 

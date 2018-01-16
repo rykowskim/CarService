@@ -30,7 +30,7 @@ namespace CarService.Web.Controllers
             {
                 UserName = User.Identity.Name,
                 IsVerified = _employeeService.Employees.Where(x => x.User_Id == userId && x.IsActive).FirstOrDefault().IsVerified,
-                OrderItems = _orderService.Orders.Select(n => new OrderItem
+                OrderItems = _orderService.Orders.OrderByDescending(x => x.ModifyDate).Take(6).Select(n => new OrderItem
                 {
                     OrderId = n.Id,
                     CustomerId = n.Customer.Id,

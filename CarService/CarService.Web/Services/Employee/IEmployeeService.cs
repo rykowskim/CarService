@@ -10,5 +10,6 @@ namespace CarService.Web.Services.Employee
         void Create(Data.Models.Employee employee);
         void Update(Data.Models.Employee employee);
         IEnumerable<Schedule> GetSchedule(int empoloyeeId);
+        IEnumerable<ResultItem> Search(EmployeeSearchItem items);
     }
 }

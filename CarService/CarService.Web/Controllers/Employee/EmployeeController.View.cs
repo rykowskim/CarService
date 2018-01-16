@@ -3,20 +3,21 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using System.Web;
 using System.Web.Mvc;
 
 namespace CarService.Web.Controllers.Employee
 {
     public partial class EmployeeController
     {
-        [HttpGet, Route("Employee/Edit")]
-        public ActionResult Edit()
+        [HttpGet, Route("Employee/View/{id}")]
+        public ActionResult View(int id, string returnUrl)
         {
-            var identity = (ClaimsIdentity)User.Identity;
-            IEnumerable<Claim> claims = identity.Claims;
-            var id = int.Parse(claims.Where(x => x.Type == "Id").Select(w => w.Value).FirstOrDefault());
-            
-            var employee = _employeeService.Employees.Where(x => x.User_Id == id && x.IsActive).First();
+            var employee = _employeeService.Employees.FirstOrDefault(x => x.Id == id && x.IsActive);
+            if (employee == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
 
             var viewModel = new EmployeeEdit(employee)
             {
@@ -30,14 +31,14 @@ namespace CarService.Web.Controllers.Employee
             return View(viewModel);
         }
 
-        [HttpPost, Route("Employee/Edit"), ActionName("Edit")]
-        public ActionResult EditPost()
+        [HttpPost, Route("Employee/View/{id}"), ActionName("View")]
+        public ActionResult ViewPost(int id, string returnUrl)
         {
-            var identity = (ClaimsIdentity)User.Identity;
-            IEnumerable<Claim> claims = identity.Claims;
-            var id = int.Parse(claims.Where(x => x.Type == "Id").Select(w => w.Value).FirstOrDefault());
-
-            var employee = _employeeService.Employees.Where(x => x.User_Id == id && x.IsActive).First();
+            var employee = _employeeService.Employees.FirstOrDefault(x => x.Id == id && x.IsActive);
+            if (employee == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
 
             var viewModel = new EmployeeEdit(employee)
             {
@@ -53,9 +54,9 @@ namespace CarService.Web.Controllers.Employee
             {
                 return View(viewModel);
             }
-            
+
             try
-            {             
+            {
                 var toModel = viewModel.ToEmployee();
                 _employeeService.Update(toModel);
             }

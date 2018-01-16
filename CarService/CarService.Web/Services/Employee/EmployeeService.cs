@@ -38,5 +38,23 @@ namespace CarService.Web.Services.Employee
                 OrderStatus = n.OrderStatus.Name
             }).OrderByDescending(c => c.CreateDate);
         }
+
+        public IEnumerable<ResultItem> Search(EmployeeSearchItem item)
+        {
+            var records = Employees.Where(x => (string.IsNullOrEmpty(item.Name) || x.Name.Contains(item.Name)) &&
+                                            (string.IsNullOrEmpty(item.Surname) || x.Surname.Contains(item.Surname)) &&
+                                            (string.IsNullOrEmpty(item.Email) || x.Surname.Contains(item.Email)) &&
+                                            (item.PositionId == null || x.Position.Id == item.PositionId) && x.IsActive);
+
+            return records.Select(n => new ResultItem
+            {
+                Id = n.Id,
+                FullName = string.Format("{0} {1}", n.Name, n.Surname),
+                Email = n.User.Email,
+                Phone = n.Phone,
+                Position = n.Position.Name,
+                CountOfTasks = n.Order.Count
+            });
+        }
     }
 }

@@ -32,6 +32,10 @@ namespace CarService.Data.Models
         
         public DateTime DateofBirth { get; set; }
 
+        public virtual Role Role { get; set; }
+
+        public int Role_Id { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employee> Employee { get; set; }
 
