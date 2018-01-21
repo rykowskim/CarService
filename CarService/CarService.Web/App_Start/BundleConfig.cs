@@ -23,10 +23,6 @@ namespace CarService.Web
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
-
             bundles.Add(new ScriptBundle("~/bundles/inputmask").Include(
                     //~/Scripts/Inputmask/dependencyLibs/inputmask.dependencyLib.js",  //if not using jquery
                     "~/Scripts/Inputmask/inputmask.js",
@@ -35,6 +31,13 @@ namespace CarService.Web
                     "~/Scripts/Inputmask/inputmask.date.extensions.js",
                     //and other extensions you want to include
                     "~/Scripts/Inputmask/inputmask.numeric.extensions.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/Scripts").Include(
+                    "~/Scripts/Employee.js"));
+
+            bundles.Add(new StyleBundle("~/Content/css").Include(
+                      "~/Content/bootstrap.css",
+                      "~/Content/site.css"));
         }
     }
 }

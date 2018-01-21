@@ -3,7 +3,7 @@
 <div class="container">
     <div class="page-header">
         <div class="pull-right">
-            <a href="" class="btn btn-default" style="border-radius:0px; border-color: #808080; color:#808080">
+            <a href="@Url.Action("Create", "Employee", new { returnUrl = HttpContext.Current.Request.Url })" class="btn btn-default" style="border-radius:0px; border-color: #808080; color:#140f11">
                 <i class="fa fa-user-plus fa-fw"></i>Nowy pracownik
             </a>
         </div>
@@ -28,22 +28,25 @@
                 @Html.LabelFor(m => m.PositionId, new { @class = "control-label" })
                 @Html.DropDownListFor(m => m.PositionId, Model.Positions, "--Wybierz--", new { @class = "form-control", @style = "border-radius: 0px" })
             </div>
+            <div class="col-md-2 col-md-offset-2" style="padding-top:25px;">
+                <div class="pull-right">
+                    <input type="submit" value="Szukaj" class="btn btn-primary" style="border-radius:0px; width:79px" />
+                    <button type="button" id="clearBtn" class="btn btn-danger" style="border-radius:0px;">Wyczyść</button>
+                </div>
+            </div>
         </div>
         <div class="form-group">
-            <div class="pull-right">
-                <input type="submit" value="Szukaj" class="btn btn-primary" style="border-radius:0px; width:79px" />
-                <button type="button" id="clearBtn" class="btn btn-danger" style="border-radius:0px;">Wyczyść</button>
-            </div>
+            
         </div><br /><br />
     }
-    <table class="table table-striped table-bordered">
+    <table class="table table-striped table-bordered" style="margin-top: -40px; margin-bottom:-10px;">
         <thead style="background-color: #135bd3; color:white">
             <tr>
                 <th style="width:275px;">Imię i Nazwisko</th>
                 <th style="width:200px;">Email</th>
                 <th style="width:150px;">Telefon</th>
                 <th style="width:200px;">Stanowisko</th>
-                <th style="width:40px;">Naprawy</th>
+                <th style="width:30px;">Naprawy</th>
             </tr>
         </thead>
         <tbody>
@@ -54,14 +57,16 @@
                     <td>@item.Email</td>
                     <td>@item.Phone</td>
                     <td>@item.Position</td>
-                    <td>@item.CountOfTasks</td>
+                    <td class="text-center"><strong>@item.CountOfTasks</strong></td>
                 </tr>
             }
         </tbody>
     </table>
-    @Html.PagedListPager(Model.ResultItems, page => Url.Action("List", new { page }))
+    @Html.PagedListPager(Model.ResultItems, page => Url.Action("Search", new { page }))
+    @*<div id="TasksTable"></div>*@
 </div>
 <script>
+    /*Czysczenie pól*/
     $(function () {
         $('#clearBtn').on('click', function () {
             $('#@Html.IdFor(x => x.Name)').val('');
@@ -70,5 +75,50 @@
             $('#@Html.IdFor(x => x.PositionId)').val(null);
         });
     });
+
+    /*Pobranie zadań*/
+    @*$(function () {
+        $.each('@Model.ResultItems', function (i, item) {
+            $('#TasksBtn' + item.Id).on('click', function () {
+            var employeeId = $(this).attr('data-id');
+            var url = '@Url.Action("GetOrders", "Order", new { id = "--id--"})';
+            alert('dziala');
+            $.ajax({
+                url: url.replace('--id--', employeeId),
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                    $('#TasksTable').html(
+                        '<table class="table table-striped table-bordered">' +
+                        '<thead style="background-color: #135bd3; color:white">' +
+                        '<tr>' +
+                        '<th style="width:30px;">Nr zl.</th>' +
+                        '<th style="width:120px;">Klient</th>' +
+                        '<th style="width:120px;">Samochód</th>' +
+                        '<th style="width:120px;">Status</th>' +
+                        '<th style="width:120px;">Typ</th>' +
+                        '</tr>' +
+                        '</thead>' +
+                        '<tbody>')
+                        $.each(data, function (i, item)
+                        {
+                            $('#TasksTable').find('tbody').append('<tr><td>' + item.Id + '</td>' +
+                                '<td>' + item.Name + ' ' + item.Surname + '</td>' + 
+                                '<td>' + item.Mark + ' ' + item.Model + '</td>' +
+                                '<td>' + item.OrderStatus + '</td>' + 
+                                '<td>' + item.OrderType +'</td>' +
+                                '</tr>')
+                        }) 
+                        $('#TasksTable').append('</tbody>' +
+                        '</table>');
+                },
+                error: function () {
+                    console.log('Błąd pobierania danych');
+                }
+            });
+            });
+        })
+    });*@
 
 </script>

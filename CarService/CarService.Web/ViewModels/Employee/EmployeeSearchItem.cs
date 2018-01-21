@@ -7,6 +7,8 @@ namespace CarService.Web.ViewModels.Employee
 {
     public class EmployeeSearchItem
     {
+        public int AuthenticatedUserId { get; set; }
+
         [DisplayName("Imię")]
         public string Name { get; set; }
 

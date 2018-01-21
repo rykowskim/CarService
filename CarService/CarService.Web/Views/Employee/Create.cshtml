@@ -1,0 +1,148 @@
+﻿@model CarService.Web.ViewModels.Employee.Create
+<div class="container">
+    <div class="page-header">
+        <h3>Dodawanie pracownika</h3>
+    </div>
+    @using (Html.BeginForm("Create", "Employee", new { returnUrl = Model.ReturnUrl }))
+    {
+        @Html.ValidationSummary()
+        @Html.HiddenFor(m => m.IsAdministrator)
+        <div class="row">
+            <div class="col-md-5">
+                <div class="panel panel-default" style="border-radius: 0px;">
+                    <div class="panel-heading clearfix" style="padding: 9px 9px 9px 9px; margin-bottom: -10px;">
+                        <h3 class="panel-title pull-left">Dane osobowe</h3>
+                    </div>
+                    <div class="panel-body col-md-offset-1" style="margin-bottom:-20px;">
+                        <div class="form-group row">
+                            @Html.LabelFor(m => m.Name, new { @class = "control-label col-md-2", @style = "line-height: 32px;" })
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @style = "border-radius:0px" })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            @Html.LabelFor(m => m.Surname, new { @class = "control-label col-md-2", @style = "line-height: 32px;" })
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(m => m.Surname, new { @class = "form-control", @style = "border-radius:0px" })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            @Html.LabelFor(m => m.Email, new { @class = "control-label col-md-2", @style = "line-height: 32px;" })
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @style = "border-radius:0px" })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            @Html.LabelFor(m => m.BirthDate, new { @class = "control-label col-md-2 required" })
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(m => m.BirthDate, new { @class = "form-control", type = "date", @min = DateTime.Now, @style = "border-radius:0px" })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            @Html.LabelFor(m => m.Pesel, new { @class = "control-label col-md-2", @style = "line-height: 32px;" })
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(m => m.Pesel, new { @class = "form-control", @style = "border-radius:0px" })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            @Html.LabelFor(m => m.Phone, new { @class = "control-label col-md-2", @style = "line-height: 32px;" })
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", @style = "border-radius:0px" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="panel panel-default" style="border-radius: 0px; margin-bottom: 8px;">
+                    <div class="panel-heading clearfix" style="padding: 9px 9px 9px 9px;">
+                        <h3 class="panel-title pull-left">Adres</h3>
+                    </div>
+                    <div class="panel-body" style="margin-bottom:-20px;">
+                        <div class="col-md-offset-1">
+                        @Html.EditorFor(m => m.AddressEdit, "Shared/EditorTemplates/AddressEdit")
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default" style="border-radius: 0px;">
+                    <div class="panel-heading clearfix" style="padding: 9px 9px 9px 9px;">
+                        <h3 class="panel-title pull-left">Inne</h3>
+                    </div>
+                    <div class="panel-body" style="margin-bottom:-20px;">
+                        <div class="col-md-offset-1">
+                            <div class="form-group row">
+                                @Html.LabelFor(m => m.PositionId, new { @class = "control-label col-md-2", @style = "line-height: 32px;" })
+                                <div class="col-md-4">
+                                    @Html.DropDownListFor(m => m.PositionId, Model.Positions, "--Wybierz--", new { @class = "form-control", @style = "border-radius:0px" })
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                @Html.LabelFor(m => m.Salary, new { @class = "control-label col-md-2", @style = "line-height: 32px;" })
+                                <div class="col-md-4">
+                                    @Html.TextBoxFor(m => m.Salary, new { @class = "form-control", @style = "border-radius:0px" })
+                                </div>
+                            </div>
+                            <div class="form-group row" style="border-radius:0px; margin-left:100px;">
+                                <input type="checkbox" name="fancy-checkbox-primary" id="fancy-checkbox-primary" autocomplete="off" @(Model.IsAdministrator ? "checked" : "") />
+                                <div class="btn-group">
+                                    <label for="fancy-checkbox-primary" class="btn btn-default" style="border-radius:0px; height:30px;">
+                                        <span class="glyphicon glyphicon-ok"></span>
+                                        <span></span>
+                                    </label>
+                                    <label for="fancy-checkbox-primary" class="btn btn-default active" style="border-radius:0px; height:30px; width:130px;">
+                                        Administrator
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*<div class="row">*@
+            <a href="@Model.ReturnUrl" class="btn btn-default pull-left" style="border-radius:0px; border-color: #808080; color:#140f11">Anuluj</a>
+            <button type="submit" class="btn btn-default pull-right" style="border-radius:0px; border-color: #808080; color:#140f11">Zapisz</button>
+        @*</div>*@
+        
+     }
+</div>
+<script>
+    $('#fancy-checkbox-primary').on('change', function () {
+        if (this.checked)
+        {
+            $('#@Html.IdFor(m => m.IsAdministrator)').val(true);
+            console.log($('#@Html.IdFor(m => m.IsAdministrator)').val())
+        }
+        else
+        {
+            $('#@Html.IdFor(m => m.IsAdministrator)').val(false);
+            console.log($('#@Html.IdFor(m => m.IsAdministrator)').val())
+        }
+    });
+</script>
+<style>
+    .form-group input[type="checkbox"] {
+        display: none;
+    }
+
+        .form-group input[type="checkbox"] + .btn-group > label span {
+            width: 15px;
+            height: 30px;
+        }
+
+            .form-group input[type="checkbox"] + .btn-group > label span:first-child {
+                display: none;
+            }
+
+            .form-group input[type="checkbox"] + .btn-group > label span:last-child {
+                display: inline-block;
+            }
+
+        .form-group input[type="checkbox"]:checked + .btn-group > label span:first-child {
+            display: inline-block;
+        }
+
+        .form-group input[type="checkbox"]:checked + .btn-group > label span:last-child {
+            display: none;
+        }
+</style>

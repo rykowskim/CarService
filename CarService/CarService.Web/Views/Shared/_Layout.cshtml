@@ -10,6 +10,7 @@
     @Styles.Render("~/Content/bootstrap-datepicker.css")
     @Styles.Render("~/Content/Site.css")
     @Styles.Render("~/Content/Layout.css")
+    @Styles.Render("~/Content/PagedList.css")
 
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
@@ -111,7 +112,7 @@
                                 </a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="#">
+                                        <a href="@Url.Action("Create", "Employee", new { returnUrl = HttpContext.Current.Request.Url })">
                                             <span class="fa fa-user-plus fa-fw"></span> Nowy pracownik
                                         </a>
                                     </li>

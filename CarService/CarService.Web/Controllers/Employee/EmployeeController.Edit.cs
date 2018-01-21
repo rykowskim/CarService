@@ -1,8 +1,6 @@
 ﻿using CarService.Web.ViewModels.Employee;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
 using System.Web.Mvc;
 
 namespace CarService.Web.Controllers.Employee
@@ -11,12 +9,8 @@ namespace CarService.Web.Controllers.Employee
     {
         [HttpGet, Route("Employee/Edit")]
         public ActionResult Edit()
-        {
-            var identity = (ClaimsIdentity)User.Identity;
-            IEnumerable<Claim> claims = identity.Claims;
-            var id = int.Parse(claims.Where(x => x.Type == "Id").Select(w => w.Value).FirstOrDefault());
-            
-            var employee = _employeeService.Employees.Where(x => x.User_Id == id && x.IsActive).First();
+        {          
+            var employee = _employeeService.Employees.Where(x => x.User_Id == GetUserId() && x.IsActive).First();
 
             var viewModel = new EmployeeEdit(employee)
             {
@@ -33,11 +27,7 @@ namespace CarService.Web.Controllers.Employee
         [HttpPost, Route("Employee/Edit"), ActionName("Edit")]
         public ActionResult EditPost()
         {
-            var identity = (ClaimsIdentity)User.Identity;
-            IEnumerable<Claim> claims = identity.Claims;
-            var id = int.Parse(claims.Where(x => x.Type == "Id").Select(w => w.Value).FirstOrDefault());
-
-            var employee = _employeeService.Employees.Where(x => x.User_Id == id && x.IsActive).First();
+            var employee = _employeeService.Employees.Where(x => x.User_Id == GetUserId() && x.IsActive).First();
 
             var viewModel = new EmployeeEdit(employee)
             {

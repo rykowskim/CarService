@@ -203,6 +203,7 @@
     <Compile Include="Controllers\Customer\CustomerController.cs" />
     <Compile Include="Controllers\Customer\CustomerController.Edit.cs" />
     <Compile Include="Controllers\Customer\CustomerController.List.cs" />
+    <Compile Include="Controllers\Employee\EmployeeController.Create.cs" />
     <Compile Include="Controllers\Employee\EmployeeController.cs" />
     <Compile Include="Controllers\Employee\EmployeeController.Edit.cs" />
     <Compile Include="Controllers\Employee\EmployeeController.Schedule.cs" />
@@ -213,7 +214,6 @@
     <Compile Include="Controllers\Order\OrderController.Create.cs" />
     <Compile Include="Controllers\Order\OrderController.cs" />
     <Compile Include="Controllers\Order\OrderController.Edit.cs" />
-    <Compile Include="Controllers\Order\OrderController.Get.cs" />
     <Compile Include="Controllers\Order\OrderController.Search.cs" />
     <Compile Include="Controllers\User\UserController.cs" />
     <Compile Include="Controllers\User\UserController.Register.cs" />
@@ -253,6 +253,7 @@
     <Compile Include="ViewModels\Customer\CustomerListFilters.cs" />
     <Compile Include="ViewModels\Customer\Edit.cs" />
     <Compile Include="ViewModels\Customer\ResultItem.cs" />
+    <Compile Include="ViewModels\Employee\Create.cs" />
     <Compile Include="ViewModels\Employee\EmployeeEdit.cs" />
     <Compile Include="ViewModels\Employee\ResultItem.cs" />
     <Compile Include="ViewModels\Employee\EmployeeSearchItem.cs" />
@@ -261,6 +262,7 @@
     <Compile Include="ViewModels\Home\StartPageViewModel.cs" />
     <Compile Include="ViewModels\Order\Create.cs" />
     <Compile Include="ViewModels\Order\EditOrder.cs" />
+    <Compile Include="ViewModels\Order\OrderList.cs" />
     <Compile Include="ViewModels\Order\OrderListFilters.cs" />
     <Compile Include="ViewModels\Order\SearchResult.cs" />
     <Compile Include="ViewModels\Shared\Address\AddressEdit.cs" />
@@ -303,6 +305,7 @@
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Employee.js" />
     <Content Include="Scripts\inputmask\bindings\inputmask.binding.js" />
     <Content Include="Scripts\inputmask\bindings\inputmask.binding.min.js" />
     <Content Include="Scripts\inputmask\dependencyLibs\inputmask.dependencyLib.jqlite.js" />
@@ -433,6 +436,7 @@
     <Content Include="Views\Employee\Search.cshtml" />
     <Content Include="Views\Employee\Employee\Partial\_Edit.cshtml" />
     <Content Include="Views\Employee\View.cshtml" />
+    <Content Include="Views\Employee\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,6 +1,7 @@
 ﻿using CarService.Web.ViewModels.Order;
 using PagedList;
 using System;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace CarService.Web.Controllers.Order
@@ -10,7 +11,15 @@ namespace CarService.Web.Controllers.Order
         [HttpGet, Route("Order/Search")]
         public ActionResult Search(int? page)
         {
-            var viewModel = new OrderListFilters();
+            var viewModel = new OrderListFilters
+            {
+                Employees = _employeeService.Employees.Where(x => x.IsActive && x.IsVerified)
+                                                      .Select(n => new SelectListItem
+                                                      {
+                                                          Value = n.Id.ToString(),
+                                                          Text = string.Format("{0} {1}", n.Name, n.Surname)
+                                                      }) 
+            };
             var pageIndex = page ?? 1;
             viewModel.Results = _orderService.Search(viewModel).ToPagedList(pageIndex, 10);
             return View(viewModel);
@@ -19,7 +28,15 @@ namespace CarService.Web.Controllers.Order
         [HttpPost, Route("Order/Search"), ActionName("Search")]
         public ActionResult SearchPost(int? page)
         {
-            var viewModel = new OrderListFilters();
+            var viewModel = new OrderListFilters
+            {
+                Employees = _employeeService.Employees.Where(x => x.IsActive && x.IsVerified)
+                                                      .Select(n => new SelectListItem
+                                                      {
+                                                          Value = n.Id.ToString(),
+                                                          Text = string.Format("{0} {1}", n.Name, n.Surname)
+                                                      })
+            };
 
             if (!TryUpdateModel(viewModel) || !ModelState.IsValid)
             {

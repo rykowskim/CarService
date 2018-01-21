@@ -20,9 +20,12 @@ namespace CarService.Web.ViewModels.Order
         public int? OrderStatusId { get; set; }
         [DisplayName("Sortowanie po")]
         public string SortedBy { get; set; }
+        [DisplayName("Przypisane do")]
+        public int? EmployeeId { get; set; }
         public IEnumerable<SelectListItem> OrderTypes { get; set; }
         public IEnumerable<SelectListItem> OrderStatuses { get; set; }
         public IEnumerable<SelectListItem> SortedItems { get; set; }
+        public IEnumerable<SelectListItem> Employees { get; set; }
 
         public IPagedList<SearchResult> Results { get; set; }
 

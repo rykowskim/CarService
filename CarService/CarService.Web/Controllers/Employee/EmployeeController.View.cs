@@ -1,4 +1,5 @@
 ﻿using CarService.Web.ViewModels.Employee;
+using CarService.Web.ViewModels.Order;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,13 @@ namespace CarService.Web.Controllers.Employee
                     Value = x.Id.ToString(),
                     Text = x.Name
                 }),
-                IsAdmin = User.IsInRole(Data.Enums.Role.Admin.ToString())
+                IsAdmin = User.IsInRole(Data.Enums.Role.Admin.ToString()),
+                OrderList = employee.Order.OrderByDescending(x => x.ModifyDate).Take(5).Select(n => new OrderList
+                {
+                    Id = n.Id,
+                    Customer = string.Format("{0} {1}", n.Customer.Name, n.Customer.Surname),
+                    Status = n.OrderStatus.Name 
+                })
             };
             return View(viewModel);
         }

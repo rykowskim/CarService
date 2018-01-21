@@ -17,10 +17,11 @@ namespace CarService.Web.Controllers.Employee
                 {
                     Value = x.Id.ToString(),
                     Text = x.Name
-                })
+                }),
+                AuthenticatedUserId = GetUserId()
             };
             var pageIndex = page ?? 1;
-            viewModel.ResultItems = _employeeService.Search(viewModel).ToPagedList(pageIndex, 10);
+            viewModel.ResultItems = _employeeService.Search(viewModel).ToPagedList(pageIndex, 5);
             return View(viewModel);
         }
 
@@ -33,7 +34,8 @@ namespace CarService.Web.Controllers.Employee
                 {
                     Value = x.Id.ToString(),
                     Text = x.Name
-                })
+                }),
+                AuthenticatedUserId = GetUserId()
             };
 
             if (!TryUpdateModel(viewModel) || !ModelState.IsValid)
@@ -44,7 +46,7 @@ namespace CarService.Web.Controllers.Employee
             try
             {
                 var pageIndex = page ?? 1;
-                viewModel.ResultItems = _employeeService.Search(viewModel).ToPagedList(pageIndex, 10);
+                viewModel.ResultItems = _employeeService.Search(viewModel).ToPagedList(pageIndex, 5);
                 return View(viewModel);
             }
             catch (Exception ex)

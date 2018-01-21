@@ -17,6 +17,34 @@
                 </div>
                 <div class="col-md-7">
                     @Html.EditorFor(m => m.AddressEdit, "Shared/EditorTemplates/AddressEdit")
+                    <div class="form-group row">
+                        <div class="panel panel-default" style="border-radius: 0px; width: 540px">
+                            <div class="panel-heading clearfix" style="padding: 6px 6px 6px 6px;">
+                                <h4 class="panel-title text-center" style="padding:0px;"><b>Przypisane zlecenia</b></h4>
+                            </div>
+                            <div class="panel-body" style="padding: 0px; margin-bottom:-20px;">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th style="width:30px; padding-top:4px; padding-bottom:4px;">Nr zl.</th>
+                                            <th style="width:100px; padding-top:4px; padding-bottom:4px;">Klient</th>
+                                            <th style="width:50px; padding-top:4px; padding-bottom:4px;">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.OrderList)
+                                        {
+                                            <tr>
+                                                <td style="padding-top:4px; padding-bottom:4px;"><a href="@Url.Action("Edit", "Order", new { id = item.Id, returnUrl = HttpContext.Current.Request.Url })">@item.Id</a></td>
+                                                <td style="padding-top:4px; padding-bottom:4px;">@item.Customer</td>
+                                                <td style="padding-top:4px; padding-bottom:4px;">@item.Status</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row">

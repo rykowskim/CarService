@@ -1,4 +1,5 @@
-﻿using CarService.Web.ViewModels.Shared.Address;
+﻿using CarService.Web.ViewModels.Order;
+using CarService.Web.ViewModels.Shared.Address;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -41,6 +42,8 @@ namespace CarService.Web.ViewModels.Employee
 
         public AddressEdit AddressEdit { get; set; }
 
+        public IEnumerable<OrderList> OrderList { get; set; }
+
         private readonly Data.Models.Employee _employee;
         
         public EmployeeEdit(Data.Models.Employee employee)
@@ -57,6 +60,7 @@ namespace CarService.Web.ViewModels.Employee
             EmployeeIsAdministrator = employee.User.Role.Id == (int)Data.Enums.Role.Admin;
             if (employee.Position != null)
                 PositionId = employee.Position.Id;
+            
         }
 
         public Data.Models.Employee ToEmployee()

@@ -44,7 +44,8 @@ namespace CarService.Web.Services.Employee
             var records = Employees.Where(x => (string.IsNullOrEmpty(item.Name) || x.Name.Contains(item.Name)) &&
                                             (string.IsNullOrEmpty(item.Surname) || x.Surname.Contains(item.Surname)) &&
                                             (string.IsNullOrEmpty(item.Email) || x.Surname.Contains(item.Email)) &&
-                                            (item.PositionId == null || x.Position.Id == item.PositionId) && x.IsActive);
+                                            (item.PositionId == null || x.Position.Id == item.PositionId) && x.IsActive && 
+                                            x.IsVerified && x.User.Id != item.AuthenticatedUserId);
 
             return records.Select(n => new ResultItem
             {

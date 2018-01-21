@@ -35,12 +35,15 @@
                 @Html.DropDownListFor(m => m.SortedBy, Model.SortedItems, "", new { @class = "form-control", @style = "border-radius: 0px;" })    
             </div>
         </div>
-        <div class="form-group">
-            <div class="pull-right">
+        <div class="form-group row">
+            <div class="col-md-2">
+                @Html.DropDownListFor(m => m.EmployeeId, Model.Employees, "Przypisany do", new { @class = "form-control", @style = "border-radius: 0px" })
+            </div>
+            <div class="col-md-2 col-md-offset-8">
                 <input type="submit" value="Szukaj" class="btn btn-primary" style="border-radius:0px; width:79px" />
                 <button type="button" id="clearBtn" class="btn btn-danger" style="border-radius:0px;">Wyczyść</button>
             </div>
-        </div><br /><br />
+        </div>//<br /><br />
     }
     <table class="table table-striped table-bordered">
         <thead style="background-color: #135bd3; color:white"> 
@@ -50,6 +53,7 @@
                 <th>Samochód</th>
                 <th>Typ</th>
                 <th>Status</th>
+                <th>Przypisany do</th>
                 <th>Edycja</th>
             </tr>
         </thead>
@@ -62,6 +66,7 @@
                     <td>@item.Car</td>
                     <td>@item.OrderType</td>
                     <td>@item.OrderStatus</td>
+                    <td>@item.EmployeeName</td>
                     <td class="text-center" style="width: 50px;">
                         <a href="@Url.Action("Edit", "Order", new { id = item.OrderId, returnUrl = HttpContext.Current.Request.Url })" class="btn btn-sm btn-default" style="border-radius: 0px;"><span class="fa fa-fw fa-edit"></span></a>
                     </td>
@@ -80,6 +85,7 @@
             $('#@Html.IdFor(x => x.OrderTypeId)').val('');
             $('#@Html.IdFor(x => x.OrderStatusId)').val('');
             $('#@Html.IdFor(x => x.SortedBy)').val('');
+            $('#@Html.IdFor(x => x.EmployeeId)').val('');
         });
     });
 
